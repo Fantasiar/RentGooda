@@ -36,6 +36,8 @@
         <url-pattern>/addGoods</url-pattern>
         <url-pattern>/home</url-pattern>
         <url-pattern>/showItem</url-pattern>
+        <url-pattern>/Query</url-pattern>
+        <url-pattern>/Search</url-pattern>
 
     </servlet-mapping>
     <servlet>

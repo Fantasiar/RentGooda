@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -121,6 +122,39 @@ public class GoodsManageServlet extends HttpServlet {
                 req.setAttribute("item", good);
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher("/pages/item.jsp");
                 requestDispatcher.forward(req, resp);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if(method.startsWith("Search")){
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/pages/shop.jsp");
+            requestDispatcher.forward(req, resp);
+
+        }
+        if(method.startsWith("/Query")){
+            String keyword=req.getParameter("keyword");
+            String sortMethod=req.getParameter("sortMethod");
+            int currentNum=Integer.parseInt(req.getParameter("currentNum"));
+            int NumInAPage=Integer.parseInt(req.getParameter("NumInAPage"));
+
+            try {
+                ArrayList<Goods> goods=goodsDAO.Search(keyword,sortMethod);
+                int end=goods.size()<currentNum+NumInAPage?goods.size()-1:currentNum+NumInAPage-1;
+                String json="{\"info\":{\"allNum\":"+goods.size()+",\"end\":"+end+"},";
+
+                String goodsJSON="\"goods\":[";
+                for (int i=currentNum;i<end;i++){
+                    Goods tmp=goods.get(i);
+                    goodsJSON+="{\"id\":\""+tmp.getId()+"\","+"\"cover\":\""+tmp.getPictures().get(0)+"\",\"name\":\""+tmp.getName()+"\",+\"price\":"+Double.toString(tmp.getPrice())+"},";
+                }
+                goodsJSON=goodsJSON.substring(0,goodsJSON.length()-1);
+                goodsJSON+="]";
+                json=json+goodsJSON+"}";
+                resp.setContentType("application/json; charset=utf-8");
+                PrintWriter out=resp.getWriter();
+                out.write(json);
+                out.close();
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
