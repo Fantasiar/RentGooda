@@ -90,7 +90,7 @@ public class Goods {
         this.originprice = originprice;
     }
 
-    public Goods(String id, String name, String type, String fineness, String description, String ownerId, int state) {
+    public Goods(String id, String name, String type, String fineness, String description, String ownerId, int state,double deposit,double price) {
         Id = id;
         this.name = name;
         this.type = type;
@@ -98,6 +98,8 @@ public class Goods {
         this.description = description;
         this.ownerId = ownerId;
         this.state = state;
+        this.price = price;
+        this.deposit = deposit;
     }
 
     public String getId() {
