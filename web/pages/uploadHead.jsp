@@ -1,44 +1,23 @@
+<%@ page import="RentGoods.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
     <link rel="stylesheet" type="text/css" href="/pages/css/imgareaselect-animated.css">
-    <link rel="stylesheet" type="text/css" href="/pages/css/bootstrap.min.css">
+
     <script type="text/javascript" src="/pages/js/vendor/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="/pages/js/jquery.imgareaselect.min.js"></script>
-    <script type="text/javascript">
-
-    </script>
 
 
+<link rel="stylesheet" href="../pages/css/bootstrap.min.css">
+<script src="../pages/js/bootstrap.min.js"></script>
+<script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
+
+<%User user = (User) session.getAttribute("User");%>
 <style type="text/css">
-    .uphead {
-        /*width: 650px;*/
-        /*height: 480px;*/
-        background-color: #f5f5f6;
-    }
-    .rcontent {
-        margin-left: 15px;
-    }
-    .upbutton {
-        background-color: #f5f5f6;
-        border: none;
-    }
-    .headbutton {
-        width: 64px;
-        height: 32px;
-        background-color: gold;
-        margin: 10px auto;
-        display: block;
-        clear: both;
-    }
     .bigpic {
         margin-left: 10px;
         margin-top: 15px;
         margin-bottom: 30px;
-        /*width: 300px;*/
-        /*height: 300px;*/
         border: none;
-        float: left;
-        background-color: gray;
+        background-color: white;
     }
     .smallpic {
         background-color: white;
@@ -51,7 +30,36 @@
         float: left;
     }
 </style>
-<body>
+
+<div class="container" style="background-color: #f5f5f6;height: 600px;">
+    <div class="row">
+        <div style="float: left;margin-left: 20px;margin-top: 15px">
+            <div class="frame bigpic">
+                <img id="photo" src="<%=user.getHead()%>"  >
+            </div>
+        </div>
+        <div style="float: left">
+            <div id="preview" class="smallpic" >
+                <img id="view_photo" src="<%=user.getHead()%>" width: 100% height: 100%>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <form action="/uploadHead" method="post" enctype="multipart/form-data">
+            <input id="startX" name="x" type="hidden" readonly="readonly"/>
+            <input id="startY" name="y" type="hidden" readonly="readonly"/>
+            <input id="width" name="width" type="hidden" readonly="readonly"/>
+            <input id="height" name="height" type="hidden" readonly="readonly"/>
+            <div style="margin-left: 30px">
+                <input id="upload" type="file" name="file" onchange="change(this)" style="background-color: #f5f5f6;border: none;">
+            </div>
+            <div class="col-md-2 col-md-offset-4">
+                <input type="button" value="确认" class="btn btn-primary" style="width: 80px">
+            </div>
+        </form>
+    </div>
+</div>
+<%--
 <div class="container">
 <div class="frame bigpic" >
     <img id="photo" src="images/flower2.jpg" height="100%">
@@ -69,7 +77,7 @@
     <input id="upload" type="file" name="file" onchange="change(this)" class="upbutton"/>
     <input type="button" value="确认" class="headbutton">
     </form>
-</body>
+--%>
 <script type="text/javascript">
     var width = 0;
     var height = 0;

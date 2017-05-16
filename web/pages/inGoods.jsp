@@ -22,16 +22,16 @@
     }
 </style>
 
-<ul class="list-group" style="width: 650px">
+<ul class="list-group" >
     <%
         for (Goods item : borrows){
     %>
-    <li class="list-group-item" style="height:160px;margin-bottom: 8px;background-color: #f5f5f6 ">
+    <li class="list-group-item" style="height:170px;margin-bottom: 8px;background-color: #f5f5f6 ">
         <div class="row" style="height: 40px">
-            <div class="col-md-4 ">
+            <div class="col-md-5 ">
                 <label id="<%=item.getId()%>">商品编号：<%=item.getId()%></label>
             </div>
-            <div class="col-md-5 ">
+            <div class="col-md-4 ">
                 <label>创建日期：<%=item.getDateChanged()%></label>
             </div>
             <div class="col-md-3">
@@ -40,18 +40,18 @@
         </div>
         <div class="row">
             <div class="col-md-2 ">
-                <div class="pic">
+                <div class="pic" >
                     <img src="<%=item.getPictures().get(0)%>" alt="" width="100px" height="100px">
                 </div>
             </div>
-            <div class="col-md-4 col-md-offset-2" style="margin-top: 7px">
+            <div class="col-md-4 col-md-offset-3" style="margin-top: 7px">
                 <div class="info ">
                     <label>物品名称：<%=item.getName()%></label><br>
                     <label>租金：<%=item.getPrice()%></label><br>
                     <label>押金：<%=item.getDeposit()%></label>
                 </div>
             </div>
-            <div class="col-md-2 col-md-offset-1">
+            <div class="col-md-2 ">
                 <%
                     if (item.getState()==1){
                 %>

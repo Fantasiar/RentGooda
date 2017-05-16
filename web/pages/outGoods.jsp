@@ -21,13 +21,14 @@ Created by IntelliJ IDEA.
         background-color: white;
         float: left;
     }
+
 </style>
 
-<ul class="list-group" style="width: 650px">
+<ul class="list-group" >
     <%
         for (Goods item : goods){
     %>
-    <li class="list-group-item"  id="item" style="height:200px;margin-bottom: 8px;background-color: #f5f5f6 ">
+    <li class="list-group-item"  id="item" style="height:170px;margin-bottom: 8px;background-color: #f5f5f6 ">
         <div class="row" style="height: 40px">
             <div class="col-md-5" >
                 <label>商品编号:<%=item.getId()%></label>
@@ -57,7 +58,7 @@ Created by IntelliJ IDEA.
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-2" style="margin-top: 10px">
+            <div class="col-md-2" >
                 <div class="pic">
                     <img src="<%=item.getPictures().get(0)%>" alt="" width="100px" height="100px">
                 </div>
@@ -74,8 +75,8 @@ Created by IntelliJ IDEA.
                     case 0:
                 %>
                 <div class="row">
-                    <div class="col-md-6">
-                        <select id="<%=item.getId()%>" style="margin-top: 30px;height: 30px">
+                    <div class="col-md-8">
+                        <select id="<%=item.getId()%>" style="margin-top: 10px;height: 30px;border: solid 1px gold">
                             <option value="" selected>请选择租赁对象</option>
                             <%
                                 for (User user:item.getApplyer()){
@@ -84,11 +85,13 @@ Created by IntelliJ IDEA.
                             <%}%>
                         </select >
                     </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-primary"  style="margin-top: 30px;height: 30px" onclick="lent('<%=item.getId()%>')">出租</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-primary"  style="margin-top: 20px;height: 30px" onclick="lent('<%=item.getId()%>')">出租</button>
                     </div>
-                    <div class="col-md-6 col-md-offset-6">
-                        <button type="button" class="btn btn-primary"  style="margin-top: 30px;height: 30px" onclick="deleteGoods('<%=item.getId()%>')">删除</button>
+                    <div class="col-md-4" style="margin-left: 25px">
+                        <button type="button" class="btn btn-primary"  style="margin-top: 20px;height: 30px" onclick="deleteGoods('<%=item.getId()%>')">删除</button>
                     </div>
                 </div>
                 <%
