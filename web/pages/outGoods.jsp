@@ -29,13 +29,13 @@ Created by IntelliJ IDEA.
     %>
     <li class="list-group-item"  id="item" style="height:200px;margin-bottom: 8px;background-color: #f5f5f6 ">
         <div class="row" style="height: 40px">
-            <div class="col-md-3" >
+            <div class="col-md-5" >
                 <label>商品编号:<%=item.getId()%></label>
             </div>
             <div class="col-md-4">
                 <label>创建日期：<%=item.getDateChanged()%></label>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-3">
                 <%
                     switch (item.getState()){
                         case 0:

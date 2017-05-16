@@ -146,7 +146,7 @@
                                         <div class="col-md-12">
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=A.getId()%>"><img src="<%=A.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=A.getId()%>"><img src="<%=A.getPictures().get(0)%>" alt="" height="300px" width="300px"/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -165,7 +165,7 @@
                                             </div>
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=B.getId()%>"><img src="<%=B.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=B.getId()%>"><img src="<%=B.getPictures().get(0)%>" alt="" height="300px" width="300px"/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -199,7 +199,7 @@
                                         <div class="col-md-12">
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=A.getId()%>"><img src="<%=A.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=A.getId()%>"><img width="300px" height="300px" src="<%=A.getPictures().get(0)%>" alt=""/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -218,7 +218,7 @@
                                             </div>
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=B.getId()%>"><img src="<%=B.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=B.getId()%>"><img width="300px" height="300px" src="<%=B.getPictures().get(0)%>" alt=""/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -251,7 +251,7 @@
                                         <div class="col-md-12">
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=A.getId()%>"><img src="<%=A.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=A.getId()%>"><img width="300px" height="300px" src="<%=A.getPictures().get(0)%>" alt=""/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -270,7 +270,7 @@
                                             </div>
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=A.getId()%>"><img src="<%=B.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=A.getId()%>"><img width="300px" height="300px" src="<%=B.getPictures().get(0)%>" alt=""/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">

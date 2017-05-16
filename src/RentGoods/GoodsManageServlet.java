@@ -44,22 +44,26 @@ public class GoodsManageServlet extends HttpServlet {
                     String type = req.getParameter("type");
                     String fineness = req.getParameter("fineness");
                     String description = req.getParameter("description");
-//                    String owner = ((User)req.getSession().getAttribute("User")).getUserName();
-                    String phone = req.getParameter("phone");
-                    Goods item = new Goods(id, name, type, fineness, description, "root", 0);
+                    double deposite = Double.parseDouble(req.getParameter("deposite"));
+                    double price = Double.parseDouble(req.getParameter("price"));
+                    String owner = ((User)req.getSession().getAttribute("User")).getUserName();
+                    Goods item = new Goods(id, name, type, fineness, description, owner, 0,deposite,price);
                     //接受图片
-                    Collection<Part> parts = req.getParts();
+                    ArrayList<Part> parts = new ArrayList<>();
                     ArrayList<String> picpaths = new ArrayList<String>();
                     //接收文件
+                    int i = 0;
+                    Part temp = null;
+                    while ((temp=req.getPart("file"+i))!=null){
+                        parts.add(temp);
+                        i++;
+                    }
                     for (Part part : parts) {
-                        if (!part.getName().equals("photo")) {
-                            continue;
-                        } else {
-                            String filename = FileUtils.getFilename(part);  //获取文件名
-                            String partpath = FileUtils.getFilePath(getServletContext().getInitParameter("Picspath"));
-                            FileUtils.downloadFile(part.getInputStream(), getServletContext().getInitParameter("rootpath") + partpath, filename);
-                            picpaths.add(partpath + filename);
-                        }
+                        String filename = FileUtils.getFilename(part);  //获取文件名
+                        Thread.sleep(1000);
+                        String partpath = FileUtils.getFilePath(getServletContext().getInitParameter("Picspath"));
+                        FileUtils.downloadFile(part.getInputStream(), getServletContext().getInitParameter("rootpath") + partpath, filename);
+                        picpaths.add(partpath + filename);
                     }
                     item.setPictures(picpaths);
                     goodsDAO.addGoods(item);

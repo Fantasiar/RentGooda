@@ -33,7 +33,7 @@ public class GoodsDAO {
     //添加商品
     public void addGoods(Goods goods) throws SQLException {
         //sql语句,添加商品信息到数据库
-        String sql = "insert into goodsInfo(id,name,type,fineness,description,ownerId,dateChanged) values(?,?,?,?,?,?,now())";
+        String sql = "insert into goodsInfo(id,name,type,fineness,description,ownerId,dateChanged,price,deposit,state) values(?,?,?,?,?,?,now(),?,?,0)";
         //替换sql语句values
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setString(1,goods.getId());
@@ -42,15 +42,23 @@ public class GoodsDAO {
         ps.setString(4,goods.getFineness());
         ps.setString(5,goods.getDescription());
         ps.setString(6,goods.getOwnerId());
+        ps.setDouble(7,goods.getPrice());
+        ps.setDouble(8,goods.getDeposit());
         ps.execute();   //执行sql语句
 
         //添加图片路径和状态至数据库
+        int flag = 0;
         for(String path : goods.getPictures()){
             String updatePic = "insert into pictures(picpath,id,main) values(?,?,?)";   //sql语句
             PreparedStatement pspic = connection.prepareStatement(updatePic);
             pspic.setString(1,path);
             pspic.setString(2,goods.getId());
-            pspic.setInt(3,0);
+            if (flag == 0){
+                pspic.setInt(3,1);
+                flag++;
+            }else {
+                pspic.setInt(3,0);
+            }
             pspic.execute();
         }
     }
