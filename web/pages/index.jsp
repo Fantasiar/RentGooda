@@ -10,6 +10,7 @@
 
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="RentGoods.Goods" %>
+<%@ page import="RentGoods.User" %>
 
 <% ArrayList<Goods> book = (ArrayList<Goods>) request.getAttribute("book");%>
 <% ArrayList<Goods> IT = (ArrayList<Goods>) request.getAttribute("IT");%>
@@ -304,8 +305,12 @@
         </div>
     </div>
 </div>
-
+<%
+    User user = (User) session.getAttribute("User");
+    if (user!=null){
+%>
 <jsp:include page="chatPart.jsp"/>
+<%}%>
 
 <div>
     <jsp:include page="footer.jsp"/>

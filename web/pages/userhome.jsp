@@ -15,27 +15,23 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-    ============================================ -->
 
-    <!-- All css files are included here. -->
-    <!-- Bootstrap framework main css -->
     <link rel="stylesheet" href="../pages/css/bootstrap.min.css">
-    <!-- This core.css file contents all plugings css file. -->
     <link rel="stylesheet" href="../pages/css/core.css">
-    <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="../pages/css/shortcode/shortcodes.css">
-    <!-- Theme main style -->
     <link rel="stylesheet" href="../pages/style.css">
-    <!-- Responsive css -->
     <link rel="stylesheet" href="../pages/css/responsive.css">
-    <!-- User style -->
-    <link rel="stylesheet" href="../pages/css/custom.css">
     <link rel="stylesheet" href="/pages/css/style-a8c43f98b3.css">
     <link rel="stylesheet" href="/pages/css/userinfo-13bf163bde.css">
 
-    <!-- Modernizr JS -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <style type="text/css">
+        .container{
+            width: 1000px;
+            height:700px;
+            margin-top: 120px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
 <div class="container" >
@@ -61,9 +57,8 @@
                     <a class="w-menu-item " id="myItems" style="color: black;font-size: small;text-decoration: none">我的物品</a>
                 </div>
             </div>
-            <!-- 显示收藏的商品 -->
             <div class="g-main col-md-9" >
-                <div class="tabContent active" id="j-userinfoForm"  >
+                <div class="tabContent active" id="j-userinfoForm" style="height: auto" >
                     <div class="m-userInfoForm" style="border: none;margin-top: -32px">
                     </div>
                 </div>
@@ -83,8 +78,6 @@
         <%----%>
     <jsp:include page="chatPart.jsp"/>
 </div>
-
-
 </body>
 <!-- jquery latest version -->
 <script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>

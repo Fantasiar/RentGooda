@@ -69,10 +69,6 @@
     chat.name = <%=user==null?null:"'"+user.getUserName()+"'"%>;
     chat.chatWith = null;
     $(document).ready(function () {
-        $('.chatBackground').hide();
-        $('.chatPart').hide();
-        $('.chat').hide();
-        if (true){
             function connection() {
                 if (window.WebSocket != undefined){
                     chat.socket = new WebSocket("ws://"+window.location.host+"/chat");
@@ -138,12 +134,6 @@
                 });
             }
             connection();
-
-        }else {
-
-        }
-
-
     });
     function updateContact(who) {
             var xmlhttp;

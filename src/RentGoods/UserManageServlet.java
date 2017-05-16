@@ -91,6 +91,11 @@ public class UserManageServlet extends HttpServlet{
                 }
                 break;
             case "/UserInfoManage":
+                user = (User) req.getSession().getAttribute("User");
+                if (user==null){
+                    resp.sendRedirect("/signin");
+                    return;
+                }
                 //提取post信息
                 user = (User)req.getSession().getAttribute("User");
                 user.setStudentID(req.getParameter("studentid"));
@@ -111,6 +116,10 @@ public class UserManageServlet extends HttpServlet{
             case "/uploadHead":
                 //获取当前登陆用户信息
                 user = (User) req.getSession().getAttribute("User");
+                if (user==null){
+                    resp.sendRedirect("/signin");
+                    return;
+                }
                 //获取图片裁剪情况
                 int x=0,y=0,width=0,height=0,imgWidth=0,imgHeight=0;
                 try {

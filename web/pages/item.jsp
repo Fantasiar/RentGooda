@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="RentGoods.Goods" %>
+<%@ page import="RentGoods.User" %>
 
 
 <%--
@@ -13,7 +14,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
-<% Goods item = (Goods) request.getAttribute("item");%>
+<%
+    Goods item = (Goods) request.getAttribute("item");
+    User user = (User)session.getAttribute("User");
+%>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -165,7 +169,7 @@
 
                     <br/>
                     <button type="button" class="btn btn-default" onclick="wantLent('<%=item.getId()%>','<%=item.getOwnerId()%>')">去租</button>
-                    <button type="button" class="btn btn-default" onclick="chatWith('<%=item.getOwnerId()%>')">联系主人</button>
+                    <button type="button" class="btn btn-default" onclick="<%=(user==null?"jumptoSignin()":"chatWith('"+item.getId()+"')")%>">联系主人</button>
 
                 </div>
             </div>
@@ -222,7 +226,11 @@
 </div>
 <!-- pro-info-area end -->
 
-<jsp:include page="/pages/chatPart.jsp"></jsp:include>
+    <%
+        if (user!=null){
+    %>
+    <jsp:include page="chatPart.jsp"/>
+    <%}%>
 
 <!-- footer start -->
 <div>
@@ -239,12 +247,19 @@
                 goodsId:goodsId,
                 ownerId:ownerId
             }
-        }).done(function () {
-            alert('success');
+        }).done(function (mes) {
+            if (mes == "signin"){
+                window.location.href = '/signin';
+            } else if (mes == "success"){
+                alert("已向物主发出租赁请求");
+            }
         }).fail(function () {
             alert('fail');
         });
     };
+    function jumptoSignin() {
+        window.location.href = '/signin';
+    }
 </script>
 <!-- jquery latest version -->
 <script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>

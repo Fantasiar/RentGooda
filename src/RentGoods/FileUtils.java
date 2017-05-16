@@ -4,7 +4,10 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.Part;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.Collection;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  * Created by LingHanchen on 17/5/6.
@@ -39,6 +42,20 @@ public class FileUtils {
         writer.flush();
         reader.close();
         writer.close();
+    }
+
+    public static void downloadFile(InputStream in,String id,int main,String pid,String DB_URL,String root,String password) throws SQLException, IOException {
+        Connection connection = DriverManager.getConnection(DB_URL,root,password);
+        String add = "INSERT INTO pictures(id,main,pic,pid,picpath) VALUES (?,?,?,?,?)";
+        PreparedStatement pstat = connection.prepareStatement(add);
+        pstat.setString(1,id);
+        pstat.setInt(2,main);
+        pstat.setBinaryStream(3,in,in.available());
+        pstat.setString(4,pid);
+        pstat.setString(5,"/pic?id="+pid);
+        pstat.execute();
+        in.close();
+        connection.close();
     }
 
     public static void cutImage(String filepath,int x,int y,int height,int imgHeight) throws IOException {
