@@ -1,4 +1,4 @@
-<%--
+<%@ page import="RentGoods.User" %><%--
   添加商品-li
   Created by IntelliJ IDEA.
   User: li
@@ -110,7 +110,12 @@
 
     </form>
 </div>
+<%
+    User user = (User) session.getAttribute("User");
+    if (user!=null){
+%>
 <jsp:include page="chatPart.jsp"/>
+<%}%>
 <jsp:include page="footer.jsp"/>
 </div>
 </body>
