@@ -87,8 +87,8 @@
                     <a class="w-menu-item" id="person">个人信息</a>
                     <a class="w-menu-item " id="head">修改头像</a>
                     <a class="w-menu-item " id="password">帐号安全</a>
-                    <a class="w-menu-item " id="myitems">租借物品</a>
-                    <a class="w-menu-item " id="myborrow">我的物品</a>
+                    <a class="w-menu-item " id="myborrow">租借物品</a>
+                    <a class="w-menu-item " id="myItems">我的物品</a>
                 </div>
             </div>
             <!-- 显示收藏的商品 -->
@@ -114,6 +114,7 @@
 
     </div>
     <%----%>
+    <jsp:include page="chatPart.jsp"/>
 </div>
 
 
@@ -137,9 +138,9 @@
         $.ajax({
             url:"/UserInfo"
         }).done(function (data) {
-            $('.right').append(data);
+            $('.m-userInfoForm').append(data);
         }).fail(function (data) {
-            $(".right").append(data);
+            $(".m-userInfoForm").append(data);
         });
     });
     $('#person').click(function () {
@@ -147,7 +148,7 @@
             $('.m-userInfoForm').empty();
             $('.m-userInfoForm').append(data);
         });
-    })
+    });
     $('#head').click(function () {
         $.ajax({
             url:"/getUserHead"
@@ -164,5 +165,17 @@
             $('.m-userInfoForm').append(data);
         });
     });
+    $('#myItems').click(function () {
+        $.get("/MyItems").done(function (data) {
+            $('.m-userInfoForm').empty();
+            $('.m-userInfoForm').append(data);
+        });
+    });
+    $('#myborrow').click(function () {
+        $.get("/Myborrow").done(function (data) {
+            $('.m-userInfoForm').empty();
+            $('.m-userInfoForm').append(data);
+        });
+    })
 </script>
 </html>

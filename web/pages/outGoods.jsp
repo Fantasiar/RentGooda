@@ -87,6 +87,9 @@ Created by IntelliJ IDEA.
                     <div class="col-md-4">
                         <button type="button" class="btn btn-primary"  style="margin-top: 30px;height: 30px" onclick="lent('<%=item.getId()%>')">出租</button>
                     </div>
+                    <div class="col-md-6 col-md-offset-6">
+                        <button type="button" class="btn btn-primary"  style="margin-top: 30px;height: 30px" onclick="deleteGoods('<%=item.getId()%>')">删除</button>
+                    </div>
                 </div>
                 <%
                         break;
