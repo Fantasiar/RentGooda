@@ -41,8 +41,8 @@
                     <div class="search-block-top display-inline">
                         <div class="icon-search"></div>
                         <div class="toogle-content">
-                            <form action="#" id="searchbox">
-                                <input type="text" placeholder="Search"/>
+                            <form action="/Search" id="searchbox">
+                                <input type="text" placeholder="输入关键字" name="query"/>
                                 <button class="button-search"></button>
                             </form>
                         </div>

@@ -153,6 +153,13 @@
     }
 
     )
+    function Nosubmit() {
+        search();
+        return false;
+    }
+    function updateKeyword(event) {
+        keyword=event.target.value;
+    }
 </script>
 
 
@@ -188,10 +195,10 @@
                             <!--<li role="presentation" class="active"><a href="#home" data-toggle="tab"><i-->
                             <!--class="fa fa-th-large" aria-hidden="true"></i></a></li>-->
                             <!--</ul>-->
-                            <form id="keywordform" class="selector-field f-left  hidden-xs col-md-4">
+                            <form id="keywordform" class="selector-field f-left  hidden-xs col-md-4" onsubmit="return Nosubmit();">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="keyword" placeholder="请输入关键字">
+                                        <input type="text" class="form-control" id="keyword" placeholder="请输入关键字" oninput="updateKeyword(event)">
                                         <div class="input-group-addon" onclick="search()">搜索</div>
                                     </div>
                                 </div>
