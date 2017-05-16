@@ -7,52 +7,71 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" href="../pages/css/bootstrap.min.css">
+<script src="../pages/js/bootstrap.min.js"></script>
+<script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
 <%User user = (User) session.getAttribute("User");%>
     <style type="text/css">
-        .info{
-            width: 650px;
-            height: 500px;
-            background-color: #f5f5f6;
-        }
         input{
             width: 500px;
             height: 40px;
             background-color: white;
             border: solid 1px gold;
         }
-        .rtable{
-            margin-left: 15px;
-        }
-        .fixbutton{
-            width: 64px;
-            height: 32px;
-            background-color: gold;
-        }
     </style>
     <script type="text/javascript" src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
-<div class="info">
-    <div class="rtable">
+<div class="container" style="margin-top: 30px;margin-left:100px;height: auto">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="nickname" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">昵称</label>
+            <div class="col-md-4">
+                <input type="text" id="nickname" style="height: 40px;border: solid 1px gold" class="form-control" placeholder="请输入您的昵称" value="<%=user.getNickName()%>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="studentID" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">学号</label>
+            <div class="col-md-4">
+                <input type="text" id="studentID" style="height: 40px;border: solid 1px gold" class="form-control" placeholder="请输入您的学号" value="<%=user.getStudentID()%>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="school" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">学校</label>
+            <div class="col-md-4">
+                <input type="text" id="school" style="height: 40px;border: solid 1px gold" class="form-control" placeholder="请输入您的学校" value="<%=user.getSchool()%>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="telephone" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">手机号</label>
+            <div class="col-md-4">
+                <input type="text" id="telephone" style="height: 40px;border: solid 1px gold" class="form-control" placeholder="请输入您的手机号" value="<%=user.getTelephone()%>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">Email</label>
+            <div class="col-md-4">
+                <input type="text" id="email" style="height: 40px;border: solid 1px gold" class="form-control" placeholder="请输入您的Email" value="<%=user.getEmail()%>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sex" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">性别</label>
+            <%int sex = user.getSex();%>
+            <div class="col-md-4" >
+                <select  id="sex" class="form-control" style="height: 40px;border: solid 1px gold">
+                    <option value="0" <%=(sex==0)?"selected='selected'":""%>>保密</option>
+                    <option value="1" <%=(sex==1)?"selected='selected'":""%>>男</option>
+                    <option value="2" <%=(sex==2)?"selected='selected'":""%>>女</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-3">
+                <button type="submit" class="btn btn-primary" onclick="changUserInfo()">提交</button>
+            </div>
+        </div>
+    </form>
+   <%-- <div class="">
         <table style="border-collapse:separate; border-spacing:10px 30px;">
-            <tr>
-                <td>昵称:</td>
-                <td><input type="text" id="nickname" class="content" value="<%=user.getNickName()%>"></td>
-            </tr>
-            <tr>
-                <td>学号:</td>
-                <td><input type="text" id="studentID" class="content" value="<%=user.getStudentID()%>"></td>
-            </tr>
-            <tr>
-                <td>学校:</td>
-                <td><input type="text" id="school" class="content" value="<%=user.getSchool()%>"></td>
-            </tr>
-            <tr>
-                <td>手机号:</td>
-                <td><input type="text" id="telephone" class="content" value="<%=user.getTelephone()%>"></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="email" id="email" class="content" value="<%=user.getEmail()%>"></td>
-            </tr>
+
             <tr>
                 <td>性别:</td>
                 <td>
@@ -69,7 +88,7 @@
             </tr>
         </table>
     </div>
-
+     --%>
     <%--
     昵称:<input type="text" id="nickname" class="content"><br>
     学号:<input type="text" id="studentID" class="content"><br>

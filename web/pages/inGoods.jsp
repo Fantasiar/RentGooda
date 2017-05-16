@@ -28,10 +28,10 @@
     %>
     <li class="list-group-item" style="height:160px;margin-bottom: 8px;background-color: #f5f5f6 ">
         <div class="row" style="height: 40px">
-            <div class="col-md-4 ">
+            <div class="col-md-5">
                 <label id="<%=item.getId()%>">商品编号：<%=item.getId()%></label>
             </div>
-            <div class="col-md-5 ">
+            <div class="col-md-4 ">
                 <label>创建日期：<%=item.getDateChanged()%></label>
             </div>
             <div class="col-md-3">

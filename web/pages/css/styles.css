@@ -15,6 +15,7 @@ button, input {
 }
 
 .chatPart {
+  display: none;
   z-index: 10000;
   position: fixed;
   top: 56%;
@@ -29,7 +30,7 @@ button, input {
 .chatBackground{
   z-index: 1000;
   position: fixed;
-  display: block;
+  display: none;
   top: 0;
   left: 0;
   opacity: 0.5;

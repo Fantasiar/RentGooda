@@ -65,11 +65,11 @@
                 </div>
             </div>
             <!-- 显示收藏的商品 -->
-            <div class="g-main">
+            <div class="g-main" style="width: 800px;height: auto">
                 <div class="m-userInfoTab">
                 </div>
                 <div class="tabContent active" id="j-userinfoForm">
-                    <div class="m-userInfoForm">
+                    <div class="m-userInfoForm" style="height: auto;width: auto">
                     </div>
                 </div>
             </div>

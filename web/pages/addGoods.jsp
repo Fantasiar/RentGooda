@@ -14,19 +14,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-    ============================================ -->
-    <!-- All css files are included here. -->
-    <!-- Bootstrap framework main css -->
-    <link rel="stylesheet" href="../pages/css/bootstrap.min.css">
-    <!-- This core.css file contents all plugings css file. -->
-    <link rel="stylesheet" href="../pages/css/core.css">
-    <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="../pages/css/shortcode/shortcodes.css">
-    <!-- Theme main style -->
-    <%--<link rel="stylesheet" href="../pages/style.css">--%>
-    <!-- Responsive css -->
-    <link rel="stylesheet" href="../pages/css/responsive.css">
+    <link rel="stylesheet" href="/pages/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/pages/css/core.css">
+    <link rel="stylesheet" href="/pages/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="/pages/style.css">
+    <link rel="stylesheet" href="/pages/css/responsive.css">
     <link rel="stylesheet" href="/pages/css/upload.css">
 
 </head>
@@ -67,7 +59,14 @@
 </style>
 <div class="container">
 <jsp:include page="nvi.jsp"/></div>
-
+<div class="breadcrumb-area">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i></a></li>
+            <li class="active"><a href="#">个人中心</a></li>
+        </ol>
+    </div>
+</div>
 <div class="shop-area" align="center">
     <form action="/addGoods" method="post" enctype="multipart/form-data">
         <table>
@@ -116,7 +115,7 @@
 </div>
 </body>
 <!-- jquery latest version -->
-<script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
+<script src="/pages/js/jquery-1.7.2.min.js"></script>
 <!-- Bootstrap framework js -->
 <script src="../pages/js/bootstrap.min.js"></script>
 <!-- All js plugins included in this file. -->
