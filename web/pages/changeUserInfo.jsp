@@ -20,42 +20,42 @@
         }
     </style>
     <script type="text/javascript" src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
-<div class="container" style="margin-top: 30px;margin-left:100px;height: auto">
-    <form class="form-horizontal" role="form">
+<div class="container" style="background-color: #f5f5f6;height: 600px;" >
+    <form class="form-horizontal" role="form" style="margin-top: 30px;width: 650px">
         <div class="form-group">
-            <label for="nickname" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">昵称</label>
-            <div class="col-md-4">
+            <label for="nickname" class="col-md-2 " style="margin-left: 20px;margin-top: 10px">昵称</label>
+            <div class="col-md-8">
                 <input type="text" id="nickname" style="height: 40px;border: solid 1px gold" class="form-control" placeholder="请输入您的昵称" value="<%=user.getNickName()%>">
             </div>
         </div>
         <div class="form-group">
-            <label for="studentID" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">学号</label>
-            <div class="col-md-4">
+            <label for="studentID" class="col-md-2 " style="margin-left: 20px;margin-top: 10px">学号</label>
+            <div class="col-md-8">
                 <input type="text" id="studentID" style="height: 40px;border: solid 1px gold" class="form-control" placeholder="请输入您的学号" value="<%=user.getStudentID()%>">
             </div>
         </div>
         <div class="form-group">
-            <label for="school" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">学校</label>
-            <div class="col-md-4">
+            <label for="school" class="col-md-2 " style="margin-left: 20px;margin-top: 10px">学校</label>
+            <div class="col-md-8">
                 <input type="text" id="school" style="height: 40px;border: solid 1px gold" class="form-control" placeholder="请输入您的学校" value="<%=user.getSchool()%>">
             </div>
         </div>
         <div class="form-group">
-            <label for="telephone" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">手机号</label>
-            <div class="col-md-4">
+            <label for="telephone" class="col-md-2 " style="margin-left: 20px;margin-top: 10px">手机号</label>
+            <div class="col-md-8">
                 <input type="text" id="telephone" style="height: 40px;border: solid 1px gold" class="form-control" placeholder="请输入您的手机号" value="<%=user.getTelephone()%>">
             </div>
         </div>
         <div class="form-group">
-            <label for="email" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">Email</label>
-            <div class="col-md-4">
+            <label for="email" class="col-md-2 " style="margin-left: 20px;margin-top: 10px">Email</label>
+            <div class="col-md-8">
                 <input type="text" id="email" style="height: 40px;border: solid 1px gold" class="form-control" placeholder="请输入您的Email" value="<%=user.getEmail()%>">
             </div>
         </div>
         <div class="form-group">
-            <label for="sex" class="col-md-1 " style="margin-left: 20px;margin-top: 10px">性别</label>
+            <label for="sex" class="col-md-2 " style="margin-left: 20px;margin-top: 10px">性别</label>
             <%int sex = user.getSex();%>
-            <div class="col-md-4" >
+            <div class="col-md-8" >
                 <select  id="sex" class="form-control" style="height: 40px;border: solid 1px gold">
                     <option value="0" <%=(sex==0)?"selected='selected'":""%>>保密</option>
                     <option value="1" <%=(sex==1)?"selected='selected'":""%>>男</option>
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-3 col-md-3">
+            <div class="col-md-offset-4 col-md-3" style="margin-top: 20px">
                 <button type="submit" class="btn btn-primary" onclick="changUserInfo()">提交</button>
             </div>
         </div>

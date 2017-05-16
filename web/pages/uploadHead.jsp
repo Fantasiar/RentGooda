@@ -1,10 +1,14 @@
 <%@ page import="RentGoods.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+    <link rel="stylesheet" type="text/css" href="/pages/css/imgareaselect-animated.css">
+
+    <script type="text/javascript" src="/pages/js/vendor/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="/pages/js/jquery.imgareaselect.min.js"></script>
+
+
 <link rel="stylesheet" href="../pages/css/bootstrap.min.css">
 <script src="../pages/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/pages/css/imgareaselect-animated.css">
-<script type="text/javascript" src="/pages/js/vendor/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="/pages/js/jquery.imgareaselect.min.js"></script>
+<script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
 
 <%User user = (User) session.getAttribute("User");%>
 <style type="text/css">
