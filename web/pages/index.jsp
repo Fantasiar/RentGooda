@@ -159,7 +159,7 @@
                                                     <!--这里显示价格-->
                                                     <div class="price-reviews">
                                                         <div class="price-box">
-                                                            <span class="price product-price"><%=A.getPrice()%></span>
+                                                            <span class="price product-price">租金：<%=A.getPrice()%>元/天</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -180,7 +180,7 @@
                                                     <!--这里显示价格-->
                                                     <div class="price-reviews">
                                                         <div class="price-box">
-                                                            <span class="price product-price"><%=B.getPrice()%></span>
+                                                            <span class="price product-price">租金：<%=B.getPrice()%>元/天</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -216,7 +216,7 @@
                                                     <!--这里显示价格-->
                                                     <div class="price-reviews">
                                                         <div class="price-box">
-                                                            <span class="price product-price"><%=A.getPrice()%></span>
+                                                            <span class="price product-price">租金：<%=A.getPrice()%>元/天</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -237,7 +237,7 @@
                                                     <!--这里显示价格-->
                                                     <div class="price-reviews">
                                                         <div class="price-box">
-                                                            <span class="price product-price"><%=B.getPrice()%></span>
+                                                            <span class="price product-price">租金：<%=B.getPrice()%>元/天</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -272,16 +272,14 @@
                                                     <!--这里显示价格-->
                                                     <div class="price-reviews">
                                                         <div class="price-box">
-                                                            <span class="price product-price"><%=A.getPrice()%></span>
+                                                            <span class="price product-price">租金：<%=A.getPrice()%>元/天</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=A.getId()%>"><img
-                                                            src="<%=B.getPictures().get(0)%>" height="300px"
-                                                            width="300px" alt=""/></a>
+                                                    <a href="/showItem?id=<%=A.getId()%>"><img src="<%=B.getPictures().get(0)%>" alt=""/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -293,7 +291,7 @@
                                                     <!--这里显示价格-->
                                                     <div class="price-reviews">
                                                         <div class="price-box">
-                                                            <span class="price product-price"><%=B.getPrice()%>元/天</span>
+                                                            <span class="price product-price">租金：<%=B.getPrice()%>元/天元/天</span>
                                                         </div>
                                                     </div>
                                                 </div>
