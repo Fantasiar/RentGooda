@@ -7,10 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="RentGoods.User" %>
+
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="RentGoods.Goods" %>
-<%@ page import="java.util.List" %>
 
 <% ArrayList<Goods> book = (ArrayList<Goods>) request.getAttribute("book");%>
 <% ArrayList<Goods> IT = (ArrayList<Goods>) request.getAttribute("IT");%>
@@ -146,7 +145,9 @@
                                         <div class="col-md-12">
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=A.getId()%>"><img src="<%=A.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=A.getId()%>"><img
+                                                            src="<%=A.getPictures().get(0)%>" alt="" height="300px"
+                                                            width="300px"/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -165,7 +166,9 @@
                                             </div>
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=B.getId()%>"><img src="<%=B.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=B.getId()%>"><img
+                                                            src="<%=B.getPictures().get(0)%>" alt="" height="300px"
+                                                            width="300px"/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -199,7 +202,9 @@
                                         <div class="col-md-12">
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=A.getId()%>"><img src="<%=A.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=A.getId()%>"><img
+                                                            src="<%=A.getPictures().get(0)%>" height="300px"
+                                                            width="300px" alt=""/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -218,7 +223,9 @@
                                             </div>
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=B.getId()%>"><img src="<%=B.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=B.getId()%>"><img
+                                                            src="<%=B.getPictures().get(0)%>" height="300px"
+                                                            width="300px" alt=""/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -251,7 +258,9 @@
                                         <div class="col-md-12">
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=A.getId()%>"><img src="<%=A.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=A.getId()%>"><img
+                                                            src="<%=A.getPictures().get(0)%>" height="300px"
+                                                            width="300px" alt=""/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
@@ -270,7 +279,9 @@
                                             </div>
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
-                                                    <a href="/showItem?id=<%=A.getId()%>"><img src="<%=B.getPictures().get(0)%>" alt=""/></a>
+                                                    <a href="/showItem?id=<%=A.getId()%>"><img
+                                                            src="<%=B.getPictures().get(0)%>" height="300px"
+                                                            width="300px" alt=""/></a>
                                                     <span class="new-label">新品上市</span>
                                                 </div>
                                                 <div class="product-content">
