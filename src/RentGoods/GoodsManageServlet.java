@@ -12,7 +12,6 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Enumeration;
 
 /**
  * Created by haoyun on 2017/4/26.
@@ -68,6 +67,46 @@ public class GoodsManageServlet extends HttpServlet {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "/changeGoodsState":
+                int state = Integer.parseInt(req.getParameter("state"));
+                Goods goods = new Goods();
+                if (state==1){
+                    goods.setState(state);
+                    goods.setId(req.getParameter("goodsId"));
+                    goods.setBorrowerId(req.getParameter("borrower"));
+                }else if (state==2){
+                    goods.setState(state);
+                    goods.setId(req.getParameter("goodsId"));
+                }
+                try {
+                    goodsDAO.setGoodsState(goods);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "/deleteGoods":
+                String id = req.getParameter("goodsId");
+                try {
+                    goodsDAO.cleanGoods(id);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "/applylent":
+                String goodsId = req.getParameter("goodsId");
+                String ownerId = req.getParameter("ownerId");
+                User borrower = (User)req.getSession().getAttribute("User");
+                String borrowerId = borrower.getUserName();
+                Goods item = new Goods();
+                item.setId(goodsId);
+                item.setBorrowerId(borrowerId);
+                item.setOwnerId(ownerId);
+                try {
+                    goodsDAO.addApply(item);
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -128,7 +167,6 @@ public class GoodsManageServlet extends HttpServlet {
             }
         }
         if(method.startsWith("/Search")){
-            Enumeration<String> e = req.getParameterNames();
             String query = req.getParameter("query");
             req.setAttribute("query",query);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/pages/shop.jsp");
@@ -162,6 +200,35 @@ public class GoodsManageServlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+
+        //获取我的出租商品信息
+        if (method.equals("/MyItems")){
+            User user = (User) req.getSession().getAttribute("User");
+            try {
+                ArrayList<Goods> items = goodsDAO.getGoodsByLender(user.getUserName());
+                req.setAttribute("items",items);
+                req.getRequestDispatcher("/pages/outGoods.jsp").forward(req,resp);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (method.equals("/Myborrow")){
+            User user = (User)req.getSession().getAttribute("User");
+            try {
+                ArrayList<Goods> items = goodsDAO.getGoodsByBorrower(user.getUserName());
+                req.setAttribute("borrow",items);
+                req.getRequestDispatcher("/pages/inGoods.jsp").forward(req,resp);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            goodsDAO.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

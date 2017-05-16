@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%User user = (User) session.getAttribute("User");%>
 <html>
 <head>
     <title>个人中心</title>
@@ -16,7 +17,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
     ============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
 
     <!-- All css files are included here. -->
     <!-- Bootstrap framework main css -->
@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="../pages/css/responsive.css">
     <!-- User style -->
     <link rel="stylesheet" href="../pages/css/custom.css">
+    <link rel="stylesheet" href="/pages/css/style-a8c43f98b3.css">
+    <link rel="stylesheet" href="/pages/css/userinfo-13bf163bde.css">
 
     <!-- Modernizr JS -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -67,8 +69,40 @@
     </style>
 </head>
 <body>
-<div><jsp:include page="nvi.jsp"/></div>
-<div class="container">
+<div class="container" style="margin-top: 0">
+    <div><jsp:include page="nvi.jsp"/></div>
+    <div class="g-bd" style="margin-top: 160px">
+        <div class="g-row">
+            <div class="g-sub">
+                <div class="m-userinfo">
+                    <!-- 头像-->
+                    <div class="w-avatar" id="j-sideAvatarWarp">
+                        <img src="<%=user.getHead()%>" alt="头像" width="100px" height="100px" id="j-sideAvatar">
+                    </div>
+                    <!--昵称-->
+                    <div class="w-nickname" id="j-sideNickname"><%=user.getNickName()%></div>
+                </div>
+                <!--左侧工具栏-->
+                <div class="m-menu">
+                    <a class="w-menu-item" id="person">个人信息</a>
+                    <a class="w-menu-item " id="head">修改头像</a>
+                    <a class="w-menu-item " id="password">帐号安全</a>
+                    <a class="w-menu-item " id="myborrow">租借物品</a>
+                    <a class="w-menu-item " id="myItems">我的物品</a>
+                </div>
+            </div>
+            <!-- 显示收藏的商品 -->
+            <div class="g-main">
+                <div class="m-userInfoTab">
+                </div>
+                <div class="tabContent active" id="j-userinfoForm">
+                    <div class="m-userInfoForm">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%---%>
     <div class="left">
         <ul class="nav">
             <li class="navli" id="person"><a style="color:black">个人资料</a></li>
@@ -79,6 +113,8 @@
     <div class="right">
 
     </div>
+    <%----%>
+    <jsp:include page="chatPart.jsp"/>
 </div>
 
 
@@ -102,32 +138,44 @@
         $.ajax({
             url:"/UserInfo"
         }).done(function (data) {
-            $('.right').append(data);
+            $('.m-userInfoForm').append(data);
         }).fail(function (data) {
-            $(".right").append(data);
+            $(".m-userInfoForm").append(data);
         });
     });
     $('#person').click(function () {
         $.get("/UserInfo").done(function (data) {
-            $('.right').empty();
-            $('.right').append(data);
+            $('.m-userInfoForm').empty();
+            $('.m-userInfoForm').append(data);
         });
-    })
+    });
     $('#head').click(function () {
         $.ajax({
             url:"/getUserHead"
         }).done(function (data) {
-            $('.right').empty();
-            $('.right').append(data);
+            $('.m-userInfoForm').empty();
+            $('.m-userInfoForm').append(data);
         });
     });
     $('#password').click(function () {
         $.ajax({
             url:"/getPassChange"
         }).done(function (data) {
-            $('.right').empty();
-            $('.right').append(data);
+            $('.m-userInfoForm').empty();
+            $('.m-userInfoForm').append(data);
         });
     });
+    $('#myItems').click(function () {
+        $.get("/MyItems").done(function (data) {
+            $('.m-userInfoForm').empty();
+            $('.m-userInfoForm').append(data);
+        });
+    });
+    $('#myborrow').click(function () {
+        $.get("/Myborrow").done(function (data) {
+            $('.m-userInfoForm').empty();
+            $('.m-userInfoForm').append(data);
+        });
+    })
 </script>
 </html>

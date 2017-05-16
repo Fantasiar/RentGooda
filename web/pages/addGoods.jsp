@@ -75,16 +75,16 @@
     <form action="/addGoods" method="post" enctype="multipart/form-data">
         <table>
             <tr>
-                <td>标题：</td>
+                <td>物品名：</td>
                 <td><input type="text" name="name" class="content"></td>
             </tr>
             <tr>
                 <td>类型：</td>
                 <td>
                     <select name="type" class="content">
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
+                    <option>体育产品</option>
+                    <option>书籍</option>
+                    <option>电子产品</option>
                     </select>
                 </td>
             </tr>
@@ -97,16 +97,19 @@
                 <td><textarea name="description" id="area"></textarea></td>
             </tr>
             <tr>
-                <td>上传图片：</td>
+                <td>图片上传：</td>
                 <td><input type="file" name="photo" style="border-radius: 10px;text-align: center"></td>
             </tr>
             <tr>
-                <td>联系人：</td>
+                <td>地址：</td>
                 <td><input type="text" name="owner" class="content"></td>
             </tr>
             <tr>
-                <td>联系方式：</td>
+                <td>押金：</td>
                 <td><input type="text" name="phone" class="content"></td>
+            </tr>
+                <td>价格：</td>
+            <td><input type="text" name="phone" class="content"></td>
             </tr>
             <tr>
                 <td colspan="2" align="center" ><input type="submit" value="发布" id="submit"></td>
@@ -116,6 +119,40 @@
 
     </form>
 </div>
+<script type="text/javascript" src="../pages/js/T_upload.js">
+    $(function() {
+//			var md = "product";
+//			var pid = "asdasdasdasdasd";
+        $.Tupload.init({
+//				url: "product/uploadImage2?md=" + md + "&pid=" + pid,
+            title	  : "宝贝图片大小不能超过500kb,为使避免图片上传出现问题，请尽量选择完毕图片后再上传",
+            fileNum: 5, // 上传文件数量
+            divId: "T_upload", // div  id
+            accept: "image/jpeg,image/x-png", // 上传文件的类型
+            //fileSize  :51200000,     // 上传文件的大小
+            //onSuccess: function(data, i) {
+            /*var temp =eval('(' + data.currentTarget.response + ')')
+             if(temp.fileName != undefined){
+             $("#img_src"+i).attr('value',temp.fileName);
+             $("#img_src"+i).attr('name',"upload_img");
+             }*/
+            //},
+            onDelete: function(i) {
+                /*var img_val = $("#img_src"+i).attr("value");
+                 if(img_val != '' && img_val != undefined){
+                 var md = "product";
+                 var img= $.page.getImgUrl(img_val);
+                 $.ajax({
+                 type:"POST",
+                 url: "base/delPic" ,
+                 data : {img:img,id: pid,md:md},
+                 success: function(rel){}
+                 });
+                 }*/
+            }
+        });
+    })
+</script>
 <div><jsp:include page="footer.jsp"/></div>
 </body>
 <!-- jquery latest version -->
@@ -132,4 +169,6 @@
 <script src="../pages/js/plugins.js"></script>
 <!-- Main js file that contents all jQuery plugins activation. -->
 <script src="../pages/js/main.js"></script>
+<script src="../pages/js/T_upload.js"></script>
+<script src="../pages/js/jquery-ui.min.js"></script>
 </html>

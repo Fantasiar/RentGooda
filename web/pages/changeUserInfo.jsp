@@ -35,7 +35,7 @@
         <table style="border-collapse:separate; border-spacing:10px 30px;">
             <tr>
                 <td>昵称:</td>
-                <td><input type="text" id="nickname" class="content" value="<%=user.getNickname()%>"></td>
+                <td><input type="text" id="nickname" class="content" value="<%=user.getNickName()%>"></td>
             </tr>
             <tr>
                 <td>学号:</td>

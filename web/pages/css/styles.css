@@ -14,17 +14,28 @@ button, input {
   outline: none;
 }
 
-
 .chatPart {
-  position: absolute;
-  top: 52%;
+  z-index: 10000;
+  position: fixed;
+  top: 56%;
   left: 50%;
   margin-top: -25rem;
   margin-left: -15rem;
   width: 30rem;
   height: 45rem;
-  box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.5);
   background: #2fa0ec;
+}
+.chatBackground{
+  z-index: 1000;
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  background: #5e5e5e;
+  height: 100%;
+  width: 100%;
 }
 
 .chatPart_close{
@@ -35,6 +46,7 @@ button, input {
 }
 
 .sidebar-content {
+  z-index: 2000;
   position: absolute;
   top: 0;
   left: 0;
@@ -96,6 +108,7 @@ button, input {
 }
 
 .chat {
+  z-index: 2000;
   display: none;
   position: absolute;
   top: 0;
@@ -211,9 +224,22 @@ button, input {
 }
 
 .chat_icon{
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
+  z-index: 1000000;
+  position: fixed;
+  right: 90px;
+  bottom: 54px;
   cursor: pointer;
+  height: 40px;
+  width: 40px;
+  background:  none repeat scroll 0 0;
+  background-color: #ffae00;
+}
+.chat_icon i{
+  width: 40px;
+  height: 40px;
+  color: #FFFFFF;
+  font-size: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
 }
 

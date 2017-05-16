@@ -32,7 +32,7 @@
                                         out.println("<li><a href='/signin'>注册</a></li>");
                                     }else {
                                         out.println("<li><a href='/publish'>发布出租</a></li>");
-                                        out.println("<li><a href='/PersonalManage'>个人中心</a></li>");
+                                        out.println("<li><a href='/UserManage'>个人中心</a></li>");
                                     }
                                 %>
                             </ul>

@@ -21,7 +21,20 @@ public class Goods {
     private Date dateChanged;
     private int state;
     private String borrowerId;
+    private ArrayList<User> applyer;
     private Date dateReturn;
+    private String address;
+    private double deposit;
+    private double price;
+    private double originprice;
+
+    public ArrayList<User> getApplyer() {
+        return applyer;
+    }
+
+    public void setApplyer(ArrayList<User> applyer) {
+        this.applyer = applyer;
+    }
 
     public String getAddress() {
         return address;
@@ -55,12 +68,6 @@ public class Goods {
     public void setOriginprice(double originprice) {
         this.originprice = originprice;
     }
-
-    private String address;
-    private double deposit;
-    private double price;
-    private double originprice;
-
 
     public Goods(){}
 

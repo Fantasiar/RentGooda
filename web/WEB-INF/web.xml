@@ -5,7 +5,7 @@
          version="3.1">
     <context-param>
         <param-name>DB_URL</param-name>
-        <param-value>jdbc:mysql://r.sqwe.tk:3306/RentGood</param-value>
+        <param-value>jdbc:mysql://neu.sqwe.tk:3306/RentGood</param-value>
     </context-param>
     <context-param>
         <param-name>username</param-name>
@@ -36,6 +36,11 @@
         <url-pattern>/addGoods</url-pattern>
         <url-pattern>/home</url-pattern>
         <url-pattern>/showItem</url-pattern>
+        <url-pattern>/MyItems</url-pattern>
+        <url-pattern>/Myborrow</url-pattern>
+        <url-pattern>/changeGoodsState</url-pattern>
+        <url-pattern>/deleteGoods</url-pattern>
+        <url-pattern>/applylent</url-pattern>
         <url-pattern>/Query</url-pattern>
         <url-pattern>/Search</url-pattern>
 
@@ -55,6 +60,7 @@
         <url-pattern>/uploadHead</url-pattern>
         <url-pattern>/getUserHead</url-pattern>
         <url-pattern>/changePassword</url-pattern>
+        <url-pattern>/UserManage</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>viewController</servlet-name>

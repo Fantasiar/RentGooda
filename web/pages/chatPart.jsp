@@ -13,6 +13,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" type="text/css" href="../pages/css/styles.css">
 <script type="application/javascript" src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
+<div class="chatBackground"></div>
 <div class="chatPart">
     <div class="chatPart_close">
         <img src="../pages/img/icons/close.ico" height="20px">
@@ -57,7 +58,8 @@
 </div>
 </div>
 <div class="chat_icon">
-    <img src="../pages/img/icons/chat.png" height="30px">
+    <%--<img src="../pages/img/icons/chat.png" height="30px">--%>
+    <i class="pe-7s-chat"></i>
 </div>
 <script type="application/javascript">
     var chat = {};
@@ -67,6 +69,7 @@
     chat.name = <%=user==null?null:"'"+user.getUserName()+"'"%>;
     chat.chatWith = null;
     $(document).ready(function () {
+        $('.chatBackground').hide();
         $('.chatPart').hide();
         $('.chat').hide();
         if (true){
@@ -97,9 +100,9 @@
                             var contact = document.getElementById(i);
                             if (contact == null){
                                 updateContact(i);
-                            }else {
-                                document.getElementById(i).querySelector(".contact__status").className = 'contact__status online';
                             }
+                            document.getElementById(i).querySelector(".contact__status").className = 'contact__status online';
+                            $('.chat_icon').css('background-color','#2fa0ec');
                         }
                     }
                     chat.ready = true;
@@ -139,7 +142,10 @@
         }else {
 
         }
-        function updateContact(who) {
+
+
+    });
+    function updateContact(who) {
             var xmlhttp;
             if(window.XMLHttpRequest){
                 xmlhttp = new XMLHttpRequest();
@@ -156,8 +162,6 @@
             xmlhttp.open("GET","/getUserChatInfo?who="+who,true);
             xmlhttp.send();
         }
-
-    });
     $('.chat__back').click(function () {
                 $('.chat').hide();
                 chat.chatWith = null;
@@ -176,10 +180,13 @@
 
     };
     $('.chat_icon').click(function () {
+        $('.chatBackground').show();
         $('.chatPart').show();
         $('.chat_icon').hide();
+        $('.chat_icon').css('background-color','#ffae00');
     });
     $('.chatPart_close').click(function () {
+        $('.chatBackground').hide();
         $('.chatPart').hide();
         $('.chat_icon').show();
     });
@@ -195,5 +202,14 @@
         })
 
     };
+    function chatWith(id) {
+        var content = document.getElementById(id);
+        if (content == null){
+            updateContact(id);
+        }
+        $('.chatBackground').show();
+        $('.chatPart').show();
+        $('.chat_icon').hide();
+    }
 </script>
 

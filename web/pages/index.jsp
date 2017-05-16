@@ -301,6 +301,8 @@
     </div>
 </div>
 
+<jsp:include page="chatPart.jsp"/>
+
 <div>
     <jsp:include page="footer.jsp"/>
 </div>

@@ -20,11 +20,12 @@ public class User {
     public User(String userName, String password){
         this.userName = userName;
         this.password = password;
-        studentID = null;
-        school = null;
-        telephone = null;
-        email = null;
-        head = null;
+        nickName=userName;
+        studentID = "";
+        school = "";
+        telephone = "";
+        email = "";
+        head = "";
         sex = 0;
         credit = 0;
     }
