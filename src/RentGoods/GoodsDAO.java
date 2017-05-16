@@ -1,6 +1,7 @@
 package RentGoods;
 
 import javax.xml.transform.Result;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -318,6 +319,18 @@ public class GoodsDAO {
         pstat.setString(2,goodsId);
         pstat.setString(3,borrower);
         pstat.executeUpdate();
+    }
+
+    //获取图片内容
+    public InputStream query_getPhotoImageBlob(String id) throws SQLException{
+            String sql = "select photoblob from picture where picpath=?";
+            PreparedStatement pstat = connection.prepareStatement(sql);
+            pstat.setString(1,"/pic?id="+id);
+            ResultSet rs = pstat.executeQuery();
+            InputStream result = null;
+            if (rs.next())
+                result = rs.getBlob("pic").getBinaryStream();
+            return result;
     }
 
 }
