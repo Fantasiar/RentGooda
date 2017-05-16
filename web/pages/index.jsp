@@ -18,7 +18,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home</title>
+    <title>熙物——校园物品租借</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -51,24 +51,19 @@
 <div class="slider-container">
     <!-- Slider Image 首页轮播图-->
     <div id="mainSlider" class="nivoSlider slider-image">
-        <img src="../pages/img/slider/1.jpg" alt="" title="#htmlcaption1"></div>
+        <img src="../pages/img/slider/11.jpg" alt="" title="#htmlcaption1">
+        <img src="../pages/img/slider/22.jpg" alt="" title="#htmlcaption1">
+    </div>
     <!-- Slider Caption 第一个轮播图 -->
     <div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
         <div class="container">
             <div class="slide1-text">
                 <div class="middle-text">
-                    <div class="cap-dec cap-1 wow bounceInRight" data-wow-duration="0.9s" data-wow-delay="0s">
-                        <h2>A BRAND</h2>
-                    </div>
                     <div class="cap-dec cap-2 wow bounceInRight" data-wow-duration="1.2s" data-wow-delay="0.2s">
-                        <h2>NEW ARRIVALS</h2>
+                        <h2 style="color: rgb(203,203,203)">闲置物品重新焕发生机！</h2>
                     </div>
-                    <div class="cap-text wow bounceInRight" data-wow-duration="1.2s" data-wow-delay="0.3s">
-                        Fascinating outdoor lounge chair with wooden chairs for outdoor ideas with outdoor chaise lounge
-                        chair.
-                    </div>
-                    <div class="cap-readmore wow bounceInUp" data-wow-duration="1.3s" data-wow-delay=".5s">
-                        <a href="#">Shopping</a>
+                    <div style="color: rgba(255,255,255,20)" class="cap-text wow bounceInRight" data-wow-duration="1.2s" data-wow-delay="0.3s">
+                        将闲置物品通过熙物借出去，不仅能让躺在抽屉里的它重新派上用场，还能收获租金，岂不美哉！
                     </div>
                 </div>
             </div>
@@ -322,8 +317,7 @@
 <!-- Bootstrap framework js -->
 <script src="../pages/js/bootstrap.min.js"></script>
 <!-- ajax-mail js发邮件的，删掉 -->
-<script src="../pages/js/ajax-mail.js"></script>
-<!-- owl.carousel js 控制滑动的，删掉-->
+
 <script src="../pages/js/owl.carousel.min.js"></script>
 <!-- jquery.nivo.slider js -->
 <script src="../pages/js/jquery.nivo.slider.pack.js"></script>

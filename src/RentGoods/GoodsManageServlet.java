@@ -229,6 +229,11 @@ public class GoodsManageServlet extends HttpServlet {
             }
         }
 
+        if(method.equals("/pic")){
+            String id = req.getParameter("id");
+
+        }
+
         try {
             goodsDAO.closeConnection();
         } catch (SQLException e) {

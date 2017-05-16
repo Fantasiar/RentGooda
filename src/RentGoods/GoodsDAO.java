@@ -155,7 +155,7 @@ public class GoodsDAO {
     public ArrayList<Goods> Search(String keyword, String sortMethod) throws SQLException {
         ArrayList<Goods> goods = new ArrayList<>();
         keyword = "%" + keyword + "%";
-        String search = "select * from goodsInfo  where name like ? or description like ? ";
+        String search = "select * from goodsInfo  where name like ? and state=0  or description like ? and state=0";
         switch (sortMethod){
             case "dup":
                 search+="order by dateChanged";
