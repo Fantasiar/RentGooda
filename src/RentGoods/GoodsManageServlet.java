@@ -65,19 +65,25 @@ public class GoodsManageServlet extends HttpServlet {
                         parts.add(temp);
                         i++;
                     }
+                    i=0;
                     for (Part part : parts) {
-                        String filename = FileUtils.getFilename(part);  //获取文件名
-                        Thread.sleep(1000);
-                        String partpath = FileUtils.getFilePath(getServletContext().getInitParameter("Picspath"));
-                        FileUtils.downloadFile(part.getInputStream(), getServletContext().getInitParameter("rootpath") + partpath, filename);
-                        picpaths.add(partpath + filename);
+//                        String filename = FileUtils.getFilename(part);  //获取文件名
+//                        Thread.sleep(1000);
+//                        String partpath = FileUtils.getFilePath(getServletContext().getInitParameter("Picspath"));
+//                        FileUtils.downloadFile(part.getInputStream(), getServletContext().getInitParameter("rootpath") + partpath, filename);
+                        String pid = String.valueOf(idUtils.generate());
+                        if (i==0){
+                            FileUtils.downloadFile(part.getInputStream(),id,1,pid,DB_URL,root,password);
+                            i++;
+                        }else {
+                            FileUtils.downloadFile(part.getInputStream(),id,0,pid,DB_URL,root,password);
+                        }
+//                        picpaths.add("/pic?id="+pid);
                     }
-                    item.setPictures(picpaths);
+//                    item.setPictures(picpaths);
                     goodsDAO.addGoods(item);
                     writer.print(id);
                 } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 break;

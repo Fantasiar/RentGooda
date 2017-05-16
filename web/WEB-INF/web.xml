@@ -73,6 +73,14 @@
         <url-pattern>/getPassChange</url-pattern>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PicturesManage</servlet-name>
+        <servlet-class>RentGoods.PictureServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PicturesManage</servlet-name>
+        <url-pattern>/pic</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>/index.jsp</welcome-file>
     </welcome-file-list>

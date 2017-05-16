@@ -47,6 +47,7 @@ public class GoodsDAO {
         ps.execute();   //执行sql语句
 
         //添加图片路径和状态至数据库
+        /*
         int flag = 0;
         for(String path : goods.getPictures()){
             String updatePic = "insert into pictures(picpath,id,main) values(?,?,?)";   //sql语句
@@ -61,6 +62,7 @@ public class GoodsDAO {
             }
             pspic.execute();
         }
+        */
     }
 
     //获取number个特定type的商品的信息，以时间排序
