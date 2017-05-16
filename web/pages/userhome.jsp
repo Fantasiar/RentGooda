@@ -75,6 +75,7 @@
             </div>
         </div>
     </div>
+
     <jsp:include page="chatPart.jsp"/>
 </div>
 </body>

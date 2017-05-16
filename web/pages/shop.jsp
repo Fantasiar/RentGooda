@@ -1,4 +1,5 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page import="RentGoods.User" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%String keyword=(String) request.getAttribute("query"); %>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -253,6 +254,12 @@
 </div>
 <!-- shop-area end -->
 
+<%
+    User user = (User) session.getAttribute("User");
+    if (user!=null){
+%>
+<jsp:include page="chatPart.jsp"/>
+<%}%>
 <!-- footer start -->
 <div>
     <jsp:include page="footer.jsp"/>

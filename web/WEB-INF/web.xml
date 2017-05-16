@@ -69,7 +69,6 @@
     <servlet-mapping>
         <servlet-name>viewController</servlet-name>
         <url-pattern>/signin</url-pattern>
-        <url-pattern>/signup</url-pattern>
         <url-pattern>/publish</url-pattern>
         <url-pattern>/getPassChange</url-pattern>
         <url-pattern>/logout</url-pattern>

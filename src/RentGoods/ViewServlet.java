@@ -6,7 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -31,15 +33,16 @@ public class ViewServlet extends HttpServlet{
                 requestDispatcher = req.getRequestDispatcher("/pages/login.jsp");
                 requestDispatcher.forward(req,resp);
                 break;
-            case "/signup":
-                requestDispatcher = req.getRequestDispatcher("/pages/signup.jsp");
-                requestDispatcher.forward(req,resp);
-                break;
             case "/publish":
                 requestDispatcher = req.getRequestDispatcher("/pages/addGoods.jsp");
                 requestDispatcher.forward(req,resp);
                 break;
             case "/getPassChange":
+                User user = (User) req.getSession().getAttribute("User");
+                if (user==null){
+                    resp.sendRedirect("/signin");
+                    return;
+                }
                 req.getRequestDispatcher("/pages/updatePasswordSimple.jsp").forward(req,resp);
                 break;
             case "/logout":

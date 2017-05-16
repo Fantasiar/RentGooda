@@ -28,6 +28,8 @@ public class GoodsManageServlet extends HttpServlet {
         String password = getServletContext().getInitParameter("password");
         //声明数据库对象
         GoodsDAO goodsDAO = new GoodsDAO(DB_URL, root, password);
+        User user = (User) req.getSession().getAttribute("User");
+        PrintWriter writer = resp.getWriter();
         try {
             goodsDAO.getConnection();   //连接数据库
         } catch (ClassNotFoundException e) {
@@ -38,6 +40,10 @@ public class GoodsManageServlet extends HttpServlet {
         switch (method) {
             case "/addGoods":
                 try {
+                    if (user==null){
+                        resp.sendRedirect("/signin");
+                        return;
+                    }
                     IDUtils idUtils = new IDUtils(1000);
                     String id = String.valueOf(idUtils.generate());  //唯一ID生存
                     //获取post内容
@@ -68,7 +74,6 @@ public class GoodsManageServlet extends HttpServlet {
                     }
                     item.setPictures(picpaths);
                     goodsDAO.addGoods(item);
-                    PrintWriter writer = resp.getWriter();
                     writer.print(id);
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -77,6 +82,10 @@ public class GoodsManageServlet extends HttpServlet {
                 }
                 break;
             case "/changeGoodsState":
+                if (user==null){
+                    resp.sendRedirect("/signin");
+                    return;
+                }
                 int state = Integer.parseInt(req.getParameter("state"));
                 Goods goods = new Goods();
                 if (state==1){
@@ -89,19 +98,29 @@ public class GoodsManageServlet extends HttpServlet {
                 }
                 try {
                     goodsDAO.setGoodsState(goods);
+                    writer.print("success");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
             case "/deleteGoods":
+                if (user==null){
+                    resp.sendRedirect("/signin");
+                    return;
+                }
                 String id = req.getParameter("goodsId");
                 try {
                     goodsDAO.cleanGoods(id);
+                    writer.print("success");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
             case "/applylent":
+                if (user==null){
+                    writer.print("signin");
+                    return;
+                }
                 String goodsId = req.getParameter("goodsId");
                 String ownerId = req.getParameter("ownerId");
                 User borrower = (User)req.getSession().getAttribute("User");
@@ -112,6 +131,7 @@ public class GoodsManageServlet extends HttpServlet {
                 item.setOwnerId(ownerId);
                 try {
                     goodsDAO.addApply(item);
+                    writer.print("success");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -211,6 +231,10 @@ public class GoodsManageServlet extends HttpServlet {
         //获取我的出租商品信息
         if (method.equals("/MyItems")){
             User user = (User) req.getSession().getAttribute("User");
+            if (user == null){
+                resp.sendRedirect("/signin");
+                return;
+            }
             try {
                 ArrayList<Goods> items = goodsDAO.getGoodsByLender(user.getUserName());
                 req.setAttribute("items",items);
@@ -222,6 +246,10 @@ public class GoodsManageServlet extends HttpServlet {
 
         if (method.equals("/Myborrow")){
             User user = (User)req.getSession().getAttribute("User");
+            if (user==null){
+                resp.sendRedirect("/signin");
+                return;
+            }
             try {
                 ArrayList<Goods> items = goodsDAO.getGoodsByBorrower(user.getUserName());
                 req.setAttribute("borrow",items);
