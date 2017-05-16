@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Shop</title>
+    <title>搜索</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -166,14 +166,13 @@
 <!-- header start -->
 <jsp:include page="nvi.jsp"></jsp:include>
 <!-- header end -->
-<div class="space-custom"></div>
+
 <!-- breadcrumb start -->
 <div class="breadcrumb-area">
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-home"></i></a></li>
-            <li><a href="#">Library</a></li>
-            <li class="active">Data</li>
+            <li class="active"><a href="#">搜索结果</a></li>
         </ol>
     </div>
 </div>
@@ -182,8 +181,6 @@
 <div class="shop-area">
     <div class="container">
         <div class="row">
-
-
             <div class="col-md-12 col-sm-8">
                 <!--右上的标题栏目-->
 
@@ -233,114 +230,7 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="home">
                                 <div class="row" id="itemList">
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="product-wrapper mb-40">
-                                            <div class="product-img">
-                                                <a href="#"><img src="img/product/5.jpg" alt=""/></a>
-                                                <span class="new-label">New</span>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title">
-                                                    <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-                                                </div>
-                                                <div class="price-reviews">
-                                                    <div class="price-box">
-                                                        <span class="price product-price">$262.00</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="product-wrapper mb-40">
-                                            <div class="product-img">
-                                                <a href="#"><img src="img/product/5.jpg" alt=""/></a>
-                                                <span class="new-label">New</span>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title">
-                                                    <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-                                                </div>
-                                                <div class="price-reviews">
-                                                    <div class="price-box">
-                                                        <span class="price product-price">$262.00</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="product-wrapper mb-40">
-                                            <div class="product-img">
-                                                <a href="#"><img src="img/product/5.jpg" alt=""/></a>
-                                                <span class="new-label">New</span>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title">
-                                                    <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-                                                </div>
-                                                <div class="price-reviews">
-                                                    <div class="price-box">
-                                                        <span class="price product-price">$262.00</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="product-wrapper mb-40">
-                                            <div class="product-img">
-                                                <a href="#"><img src="img/product/5.jpg" alt=""/></a>
-                                                <span class="new-label">New</span>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title">
-                                                    <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-                                                </div>
-                                                <div class="price-reviews">
-                                                    <div class="price-box">
-                                                        <span class="price product-price">$262.00</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="product-wrapper mb-40">
-                                            <div class="product-img">
-                                                <a href="#"><img src="img/product/5.jpg" alt=""/></a>
-                                                <span class="new-label">New</span>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title">
-                                                    <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-                                                </div>
-                                                <div class="price-reviews">
-                                                    <div class="price-box">
-                                                        <span class="price product-price">$262.00</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="product-wrapper mb-40">
-                                            <div class="product-img">
-                                                <a href="#"><img src="img/product/5.jpg" alt=""/></a>
-                                                <span class="new-label">New</span>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title">
-                                                    <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-                                                </div>
-                                                <div class="price-reviews">
-                                                    <div class="price-box">
-                                                        <span class="price product-price">$262.00</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="content-sortpagibar">
@@ -362,7 +252,6 @@
     </div>
 </div>
 <!-- shop-area end -->
-
 
 <!-- footer start -->
 <div>

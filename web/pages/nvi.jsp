@@ -48,49 +48,6 @@
                             </form>
                         </div>
                     </div>
-                    <div class="shopping-cart ml-20 display-inline">
-                        <a href="cart.html"><b>心愿单</b>(2)</a>
-                        <ul>
-                            <li>
-                                <div class="cart-img">
-                                    <a href="#"><img src="/pages/img/cart/1.jpg" alt=""/></a>
-                                </div>
-                                <div class="cart-content">
-                                    <h3><a href="#"> 1 X Faded...</a></h3>
-                                    <span><b>S, Orange</b></span>
-                                    <span class="cart-price">£ 16.84</span>
-                                </div>
-                                <div class="cart-del">
-                                    <i class="fa fa-times-circle"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cart-img">
-                                    <a href="#"><img src="/pages/img/cart/1.jpg" alt=""/></a>
-                                </div>
-                                <div class="cart-content">
-                                    <h3><a href="#"> 1 X Faded...</a></h3>
-                                    <span><b>S, Orange</b></span>
-                                    <span class="cart-price">£ 16.84</span>
-                                </div>
-                                <div class="cart-del">
-                                    <i class="fa fa-times-circle"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="shipping">
-                                    <span class="f-left">Shipping </span>
-                                    <span class="f-right cart-price"> $7.00</span>
-                                </div>
-                                <hr class="shipping-border"/>
-                                <div class="shipping">
-                                    <span class="f-left"> Total </span>
-                                    <span class="f-right cart-price">$692.00</span>
-                                </div>
-                            </li>
-                            <li class="checkout m-0"><a href="#">checkout <i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                    </div>
                     <div class="setting-menu display-inline">
                         <div class="icon-nav current"></div>
                         <ul class="content-nav toogle-content">
@@ -98,7 +55,6 @@
                                 <div class="current"><b>我的账户</b></div>
                                 <ul>
                                     <li><a href="/PersonalManage">个人中心</a></li>
-                                    <li><a href="#">心愿单</a></li>
                                     <li><a href="/logout">注销</a></li>
                                 </ul>
                             </li>
