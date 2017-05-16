@@ -21,35 +21,34 @@ Created by IntelliJ IDEA.
         background-color: white;
         float: left;
     }
-
 </style>
-<body>
+
 <ul class="list-group" style="width: 650px">
     <%
         for (Goods item : goods){
     %>
-    <li class="list-group-item"  id="item" style="height:300px;margin-bottom: 5px;background-color: #f5f5f6 ">
-        <div class="row">
-            <div class="col-md-2 col-md-offset-1" >
+    <li class="list-group-item"  id="item" style="height:200px;margin-bottom: 8px;background-color: #f5f5f6 ">
+        <div class="row" style="height: 40px">
+            <div class="col-md-3" >
                 <label>商品编号:<%=item.getId()%></label>
             </div>
-            <div class="col-md-4 col-md-offset-1">
+            <div class="col-md-4">
                 <label>创建日期：<%=item.getDateChanged()%></label>
             </div>
-            <div class="col-md-2 col-md-offset-1">
+            <div class="col-md-5">
                 <%
                     switch (item.getState()){
                         case 0:
                 %>
                 <label>状态：待出租</label>
                 <%
-                    break;
+                        break;
                     case 1:
                 %>
-                <label>状态：待归还</label>
+                <label>状态：待归还</label><br>
                 <label>租借者用户名:<%=item.getBorrowerId()%></label>
                 <%
-                    break;
+                        break;
                     case 2:
                 %>
                 <label>状态：已归还</label>
@@ -57,41 +56,54 @@ Created by IntelliJ IDEA.
                 <%--<label>状态：<%switch (item.getState()){case 0:out.println("待出租");break;case 1:out.println("待归还");break;case 2:out.println("已归还");break;}%></label>--%>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-1">
+        <div class="row" >
+            <div class="col-md-2" style="margin-top: 10px">
                 <div class="pic">
                     <img src="<%=item.getPictures().get(0)%>" alt="" width="100px" height="100px">
                 </div>
             </div>
-            <div class="col-md-4 col-md-offset-1">
+            <div class="col-md-4 col-md-offset-1" style="margin-top: 10px">
                 <div class="info ">
                     <label>物品名称：<%=item.getName()%></label><br>
                     <label>租金：<%=item.getPrice()%></label><br>
                     <label>押金：<%=item.getDeposit()%></label>
                 </div>
             </div>
-            <div class="col-md-2 col-md-offset-1" >
+            <div class="col-md-5" >
                 <%switch (item.getState()){
                     case 0:
                 %>
-                <select id="<%=item.getId()%>">
-                    <option value="" selected>请选择租赁对象</option>
+                <div class="row">
+                    <div class="col-md-6">
+                        <select id="<%=item.getId()%>" style="margin-top: 30px;height: 30px">
+                            <option value="" selected>请选择租赁对象</option>
+                            <%
+                                for (User user:item.getApplyer()){
+                            %>
+                            <option value="<%=user.getUserName()%>"><%=user.getNickName()%></option>
+                            <%}%>
+                        </select >
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary"  style="margin-top: 30px;height: 30px" onclick="lent('<%=item.getId()%>')">出租</button>
+                    </div>
+                </div>
                 <%
-                        for (User user:item.getApplyer()){
-
-                %>
-                    <option value="<%=user.getUserName()%>"><%=user.getNickName()%></option>
-                <%}%>
-                </select >
-                <button type="button" class="btn btn-primary"  style="margin-top: 33px" onclick="lent('<%=item.getId()%>')">出租</button>
-                <%
-                    break;
+                        break;
                     case 1:
                 %>
-                <button type="button" class="btn btn-primary"  style="margin-top: 33px" onclick="confirm('<%=item.getId()%>')">归还</button>
-                <button type="button" class="btn btn-primary" style="margin-top: 33px" onclick="chatWith('<%=item.getOwnerId()%>')">联系租借者</button>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary"  style="margin-top: 30px" onclick="confirm('<%=item.getId()%>')">归还</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-primary" style="margin-top: 30px" onclick="chatWith('<%=item.getOwnerId()%>')">联系租借者</button>
+                    </div>
+                </div>
+
+
                 <%
-                    break;
+                        break;
                     case 2:
                 %>
                 <%}%>
@@ -99,107 +111,11 @@ Created by IntelliJ IDEA.
         </div>
     </li>
     <%}%>
-    <%--
-    <li class="list-group-item" style="height:180px;margin-bottom: 5px;background-color: #f5f5f6 ">
-        <div class="row">
-            <div class="col-md-2 col-md-offset-1">
-                <label>ID:0000001</label>
-            </div>
-            <div class="col-md-4 col-md-offset-1">
-                <label>日期：2015.5.15</label>
-            </div>
-            <div class="col-md-2 col-md-offset-1">
-                <label>状态：已出租</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-1">
-                <div class="pic">
-                    <img src="" alt="" width="100px" height="100px">
-                </div>
-            </div>
-            <div class="col-md-4 col-md-offset-1">
-                <div class="info ">
-                    <label>物品名称：篮球</label><br>
-                    <label>租金：2元</label><br>
-                    <label>价格：80元</label>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-offset-1">
-                <button type="button" class="btn btn-primary" id="return" style="margin-top: 33px" onclick="">归还</button>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item" style="height:180px;margin-bottom: 5px;background-color: #f5f5f6 ">
-        <div class="row">
-            <div class="col-md-2 col-md-offset-1">
-                <label>ID:0000001</label>
-            </div>
-            <div class="col-md-4 col-md-offset-1">
-                <label>日期：2015.5.15</label>
-            </div>
-            <div class="col-md-2 col-md-offset-1">
-                <label>状态：待出租</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-1">
-                <div class="pic">
-                    <img src="" alt="" width="100px" height="100px">
-                </div>
-            </div>
-            <div class="col-md-4 col-md-offset-1">
-                <div class="info ">
-                    <label>物品名称：篮球</label><br>
-                    <label>租金：2元</label><br>
-                    <label>价格：80元</label>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-offset-1">
-                <select>
-                    <option value="000002">Waner1</option>
-                </select>
-                <button type="button" class="btn btn-primary" style="margin-top: 33px" onclick="">出租</button>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item" style="height:180px;margin-bottom: 5px;background-color: #f5f5f6 ">
-        <div class="row">
-            <div class="col-md-2 col-md-offset-1">
-                <label>ID:0000001</label>
-            </div>
-            <div class="col-md-4 col-md-offset-1">
-                <label>日期：2015.5.15</label>
-                <label>归还日期:2015.5.15</label>
-            </div>
-            <div class="col-md-2 col-md-offset-1">
-                <label>状态：已归还</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-1">
-                <div class="pic">
-                    <img src="" alt="" width="100px" height="100px">
-                </div>
-            </div>
-            <div class="col-md-4 col-md-offset-1">
-                <div class="info ">
-                    <label>物品名称：篮球</label><br>
-                    <label>租金：2元</label><br>
-                    <label>价格：80元</label>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-offset-1">
-            </div>
-        </div>
-    </li>
-    <%----%>
 </ul>
 
 <script type="text/javascript">
     var select = null;
     var id = null;
-
     function lent(id) {
         var borrower = document.getElementById(id).value;
         alert(borrower);
@@ -244,10 +160,6 @@ Created by IntelliJ IDEA.
             alert('fail');
         })
     };
-
-
-
 </script>
 
-</body>
-</html>
+

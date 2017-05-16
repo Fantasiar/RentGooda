@@ -112,12 +112,12 @@ public class UserManageServlet extends HttpServlet{
                 //获取当前登陆用户信息
                 user = (User) req.getSession().getAttribute("User");
                 //获取图片裁剪情况
-                int x=0,y=0,width=0,height=0;
+                int x=0,y=0,width=0,height=0,imgWidth=0,imgHeight=0;
                 try {
                     x = Integer.parseInt(req.getParameter("x"));
                     y = Integer.parseInt(req.getParameter("y"));
-                    width = Integer.parseInt(req.getParameter("width"));
                     height = Integer.parseInt(req.getParameter("height"));
+                    imgHeight = Integer.parseInt(req.getParameter("imgHeight"));
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -130,7 +130,7 @@ public class UserManageServlet extends HttpServlet{
                     //下载文件
                     FileUtils.downloadFile(image.getInputStream(),rootpath+partpath,filename);
                     if(x!=0||y!=0||width!=0||height!=0){
-                        FileUtils.cutImage(rootpath+partpath+filename,x,y,width,height);
+                        FileUtils.cutImage(rootpath+partpath+filename,x,y,height,imgHeight);
                     }
                     user.setHead(partpath+filename);
                     dao.uploadHead(user);
@@ -223,6 +223,15 @@ public class UserManageServlet extends HttpServlet{
                     dao.getUserHead(user);
                     req.getSession().setAttribute("User",user);
                     req.getRequestDispatcher("/pages/uploadHead.jsp").forward(req,resp);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "/UserManage":
+                try {
+                    dao.getUserHead(user);
+                    session.setAttribute("User",user);
+                    req.getRequestDispatcher("/pages/userhome.jsp").forward(req,resp);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

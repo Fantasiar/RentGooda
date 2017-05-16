@@ -5,7 +5,7 @@
          version="3.1">
     <context-param>
         <param-name>DB_URL</param-name>
-        <param-value>jdbc:mysql://r.sqwe.tk:3306/RentGood</param-value>
+        <param-value>jdbc:mysql://neu.sqwe.tk:3306/RentGood</param-value>
     </context-param>
     <context-param>
         <param-name>username</param-name>
@@ -57,6 +57,7 @@
         <url-pattern>/uploadHead</url-pattern>
         <url-pattern>/getUserHead</url-pattern>
         <url-pattern>/changePassword</url-pattern>
+        <url-pattern>/UserManage</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>viewController</servlet-name>

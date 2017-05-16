@@ -41,11 +41,23 @@ public class FileUtils {
         writer.close();
     }
 
-    public static void cutImage(String filepath,int x,int y,int width,int height) throws IOException {
+    public static void cutImage(String filepath,int x,int y,int height,int imgHeight) throws IOException {
         File image = new File(filepath);
         String fileType = filepath.substring(filepath.lastIndexOf(".")+1);
         BufferedImage cutimage = ImageIO.read(image);
-        cutimage = cutimage.getSubimage(x,y,width,height);
+        int finalHeight = height*cutimage.getHeight()/imgHeight;
+        int finalX = x*cutimage.getHeight()/imgHeight;
+        int finalY = y*cutimage.getHeight()/imgHeight;
+        if (finalHeight >= cutimage.getHeight()){
+            finalHeight = cutimage.getHeight();
+        }
+        if (finalX >= cutimage.getWidth()){
+            finalX = cutimage.getWidth();
+        }
+        if ((finalY >= cutimage.getHeight())){
+            finalY = cutimage.getHeight();
+        }
+        cutimage = cutimage.getSubimage(finalX,finalY,finalHeight,finalHeight);
         image.delete();
         ImageIO.write(cutimage,fileType,image);
     }
