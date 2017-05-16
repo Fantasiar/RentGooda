@@ -32,6 +32,8 @@
 
     <!-- Modernizr JS -->
     <script src="../pages/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- jquery latest version -->
+    <script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
 </head>
 
 <body>
@@ -43,13 +45,13 @@
 
     //提交参数：关键字一个，排序方式：pup,pdown,dup,ddwon,分别表示按价格升序，降序，按时间，升序，降序
     var currentPage=1;
-    var cunrentNum=0;//代表下一次打开的currentNum
+    var currentNum=0;//代表下一次打开的currentNum
     var sortMethod=$("#sortMethod").val();
-    var NumInAPage=$("#NumInApage").val();
+
     var allNum=1;
     var getBegin=0;
     var getEnd=0;
-    var allPageNum=parseInt(allNum/NumInAPage+1);
+    var allPageNum=Math.ceil(allNum/$("#NumInAPage").val());
     var keyword="<%=keyword%>";
 
     //
@@ -61,12 +63,12 @@
     function getResult() {
         $.ajax({
             url:'/Query',
-            method:'POST',
+            method:'GET',
             data:{
                 'keyword':keyword,
                 'sortMethod':$("#sortMethod").val(),
-                'currentNum':cunrentNum,
-                "NumInAPage":$("#NumInApage").val()
+                'currentNum':currentNum,
+                "NumInAPage":$("#NumInAPage").val()
             }
         }).done(function (message) {
             update(message);
@@ -79,7 +81,7 @@
         if(x<1||x>allPageNum){
             return;
         }
-        cunrentNum=(x-currentPage)*NumInAPage;
+        currentNum=(x-currentPage)*$("#NumInAPage").val();
         currentPage=x;
         getResult();
 
@@ -87,15 +89,17 @@
     //获取json数组，并更新相关内容
 
     function update(message) {
-        var message=JSON.parse(message);
+        var message=message;
         var info=message['info'];
-        getBegin=cunrentNum;
+        getBegin=currentNum;
         getEnd=info['end'];
         allNum=info['allNum'];
+        allPageNum=Math.ceil(allNum/$("#NumInAPage").val());
         //需要①把一个个商品呈现出来，②页数的显示
         var goods=message['goods'];
         var goodsString="";
-        for(var item in goods){
+        for(var x in goods){
+            var item=goods[x];
             goodsString+="<div class=\"col-md-3 col-sm-6\">\n" +
                 "                                        <div class=\"product-wrapper mb-40\">\n" +
                 "                                            <div class=\"product-img\">\n" +
@@ -115,20 +119,20 @@
                 "                                        </div>\n" +
                 "                                    </div>";
         }
-        $("#itemList").innerHTML=goodsString;
-        $("#showing").innerHTML="当前显示"+getBegin+"——"+getEnd+",共搜到"+allNum+"个。";
+        $("#itemList").html(goodsString);
+        $("#showing").html("当前显示"+getBegin+"——"+getEnd+",共搜到"+allNum+"个。");
 
         var listString="";
-        listString="<li><a onclick='fanye(currentPage-1)'><i onclick='fanye(\"pre\")' class=\"fa fa-angle-left\"></i></a></li>";
+        listString="<li><a onclick='fanye("+(currentPage-1)+")'><i  class=\"fa fa-angle-left\"></i></a></li>";
         for(var i=1;i<=allPageNum;i++){
             if(i==currentPage){
-                listString+="<li class=\"active\"><a"+i+"</a></li>";
+                listString+="<li class=\"active\"><a>"+i+"</a></li>";
             }
             else {
-                listString+="<li><a onclick='fanye(i)'>"+i+"</a></li>";
+                listString+="<li><a onclick='fanye("+i+")'>"+i+"</a></li>";
             }
         }
-        listString+="<li><a onclick='fanye(i+1)'><i class=\"fa fa-angle-right\"></i></a></li>";
+        listString+="<li><a onclick='fanye("+(currentPage+1)+")'><i class=\"fa fa-angle-right\"></i></a></li>";
 
         document.getElementById("pageNum").innerHTML=listString;
     }
@@ -143,7 +147,6 @@
             );
             $("#NumInAPage").change(
                 function () {
-                    NumInAPage=$("#NumInAPage").val();
                     getResult();
                 }
             )
@@ -185,11 +188,11 @@
                             <!--<li role="presentation" class="active"><a href="#home" data-toggle="tab"><i-->
                             <!--class="fa fa-th-large" aria-hidden="true"></i></a></li>-->
                             <!--</ul>-->
-                            <form class="selector-field f-left  hidden-xs col-md-4">
+                            <form id="keywordform" class="selector-field f-left  hidden-xs col-md-4">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="keyword" placeholder="请输入关键字">
-                                        <div class="input-group-addon">搜索</div>
+                                        <div class="input-group-addon" onclick="search()">搜索</div>
                                     </div>
                                 </div>
                             </form>
@@ -361,8 +364,7 @@
 <!-- footer end -->
 
 
-<!-- jquery latest version -->
-<script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
+
 <!-- Bootstrap framework js -->
 <script src="../pages/js/bootstrap.min.js"></script>
 <!-- owl.carousel js -->

@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Enumeration;
 
 /**
  * Created by haoyun on 2017/4/26.
@@ -126,7 +127,10 @@ public class GoodsManageServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        if(method.startsWith("Search")){
+        if(method.startsWith("/Search")){
+            Enumeration<String> e = req.getParameterNames();
+            String query = req.getParameter("query");
+            req.setAttribute("query",query);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/pages/shop.jsp");
             requestDispatcher.forward(req, resp);
 
@@ -139,13 +143,13 @@ public class GoodsManageServlet extends HttpServlet {
 
             try {
                 ArrayList<Goods> goods=goodsDAO.Search(keyword,sortMethod);
-                int end=goods.size()<currentNum+NumInAPage?goods.size()-1:currentNum+NumInAPage-1;
+                int end=goods.size()<currentNum+NumInAPage?goods.size():currentNum+NumInAPage;
                 String json="{\"info\":{\"allNum\":"+goods.size()+",\"end\":"+end+"},";
 
                 String goodsJSON="\"goods\":[";
                 for (int i=currentNum;i<end;i++){
                     Goods tmp=goods.get(i);
-                    goodsJSON+="{\"id\":\""+tmp.getId()+"\","+"\"cover\":\""+tmp.getPictures().get(0)+"\",\"name\":\""+tmp.getName()+"\",+\"price\":"+Double.toString(tmp.getPrice())+"},";
+                    goodsJSON+="{\"id\":\""+tmp.getId()+"\","+"\"cover\":\""+tmp.getPictures().get(0)+"\",\"name\":\""+tmp.getName()+"\",\"price\":"+Double.toString(tmp.getPrice())+"},";
                 }
                 goodsJSON=goodsJSON.substring(0,goodsJSON.length()-1);
                 goodsJSON+="]";
