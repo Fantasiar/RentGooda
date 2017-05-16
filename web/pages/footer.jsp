@@ -43,7 +43,7 @@
            margin: 0;
        }
     </style>
-<div class="service-area pt-70 pb-40 gray-bg">
+<div class="service-area pt-70 pb-40 gray-bg" style="height: auto;width: auto">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6">

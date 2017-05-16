@@ -15,27 +15,15 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-    ============================================ -->
 
-    <!-- All css files are included here. -->
-    <!-- Bootstrap framework main css -->
     <link rel="stylesheet" href="../pages/css/bootstrap.min.css">
-    <!-- This core.css file contents all plugings css file. -->
     <link rel="stylesheet" href="../pages/css/core.css">
-    <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="../pages/css/shortcode/shortcodes.css">
-    <!-- Theme main style -->
     <link rel="stylesheet" href="../pages/style.css">
-    <!-- Responsive css -->
     <link rel="stylesheet" href="../pages/css/responsive.css">
-    <!-- User style -->
-    <link rel="stylesheet" href="../pages/css/custom.css">
     <link rel="stylesheet" href="/pages/css/style-a8c43f98b3.css">
     <link rel="stylesheet" href="/pages/css/userinfo-13bf163bde.css">
 
-    <!-- Modernizr JS -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     <style type="text/css">
         .container{
             width: 1000px;
@@ -43,35 +31,20 @@
             margin-top: 120px;
             border: none;
         }
-        .left{
-            width: 180px;
-            height: 650px;
-            margin: 15px;
-            float: left;
-            border: none;
-        }
-        .nav{
-            width: 180px;
-            background-color: lightgray;
-        }
-        .navli{
-            text-align: center;
-            font-size: small;
-            font-family: 微软雅黑;
-        }
-        .right{
-            width: 650px;
-            height: 650px;
-            margin: 15px;
-            float: left;
-            border: none;
-        }
     </style>
 </head>
 <body>
-<div class="container" style="margin-top: 0">
+<div class="container" style="margin-top: 0;height: auto;width: auto">
     <div><jsp:include page="nvi.jsp"/></div>
-    <div class="g-bd" style="margin-top: 160px">
+    <div class="breadcrumb-area">
+        <div class="container" style="height: auto;width: auto">
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i></a></li>
+                <li class="active">个人中心</li>
+            </ol>
+        </div>
+    </div>
+    <div class="g-bd">
         <div class="g-row">
             <div class="g-sub">
                 <div class="m-userinfo">
@@ -102,22 +75,8 @@
             </div>
         </div>
     </div>
-<%---%>
-    <div class="left">
-        <ul class="nav">
-            <li class="navli" id="person"><a style="color:black">个人资料</a></li>
-            <li class="navli" id="head"><a style="color:black">头像设置</a></li>
-            <li class="navli" id="password"><a style="color:black">密码设置</a></li>
-        </ul>
-    </div>
-    <div class="right">
-
-    </div>
-    <%----%>
     <jsp:include page="chatPart.jsp"/>
 </div>
-
-
 </body>
 <!-- jquery latest version -->
 <script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
