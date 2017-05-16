@@ -16,8 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
     ============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-
     <!-- All css files are included here. -->
     <!-- Bootstrap framework main css -->
     <link rel="stylesheet" href="../pages/css/bootstrap.min.css">
@@ -26,18 +24,18 @@
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="../pages/css/shortcode/shortcodes.css">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="../pages/style.css">
+    <%--<link rel="stylesheet" href="../pages/style.css">--%>
     <!-- Responsive css -->
     <link rel="stylesheet" href="../pages/css/responsive.css">
-    <!-- User style -->
-    <link rel="stylesheet" href="../pages/css/custom.css">
+    <link rel="stylesheet" href="/pages/css/upload.css">
 
-    <!-- Modernizr JS -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <style type="text/css">
     body{
         text-align: center;
+    }
+    .shop-area{
+        margin-top: 130px;
     }
     #container{
         text-align: center;
@@ -66,31 +64,30 @@
         border-radius: 10px;
     }
 
-
 </style>
-<body>
-<div><jsp:include page="nvi.jsp"/></div>
+<div class="container">
+<jsp:include page="nvi.jsp"/></div>
 
 <div class="shop-area" align="center">
     <form action="/addGoods" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>物品名：</td>
-                <td><input type="text" name="name" class="content"></td>
+                <td><input type="text" name="name" id="name" class="content"></td>
             </tr>
             <tr>
                 <td>类型：</td>
                 <td>
-                    <select name="type" class="content">
-                    <option>体育产品</option>
-                    <option>书籍</option>
-                    <option>电子产品</option>
+                    <select name="type" class="content" id="type">
+                    <option value="sport">体育产品</option>
+                    <option value="book">书籍</option>
+                    <option value="IT">电子产品</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td>成色：</td>
-                <td><input type="text" name="fineness" class="content"></td>
+                <td><input type="text" name="fineness" id="fineness" class="content"></td>
             </tr>
             <tr>
                 <td>描述：</td>
@@ -98,77 +95,43 @@
             </tr>
             <tr>
                 <td>图片上传：</td>
-                <td><input type="file" name="photo" style="border-radius: 10px;text-align: center"></td>
-            </tr>
-            <tr>
-                <td>地址：</td>
-                <td><input type="text" name="owner" class="content"></td>
-            </tr>
+                <td><div id="T_upload"></div></td>
             <tr>
                 <td>押金：</td>
-                <td><input type="text" name="phone" class="content"></td>
+                <td><input type="text" name="phone"id="deposite" class="content"></td>
             </tr>
                 <td>价格：</td>
-            <td><input type="text" name="phone" class="content"></td>
+            <td><input type="text" name="phone" id="price" class="content"></td>
             </tr>
             <tr>
-                <td colspan="2" align="center" ><input type="submit" value="发布" id="submit"></td>
+                <td colspan="2" align="center" ><input type="button" value="发布" id="submit" onclick=""></td>
             </tr>
 
         </table>
 
     </form>
 </div>
-<script type="text/javascript" src="../pages/js/T_upload.js">
-    $(function() {
-//			var md = "product";
-//			var pid = "asdasdasdasdasd";
-        $.Tupload.init({
-//				url: "product/uploadImage2?md=" + md + "&pid=" + pid,
-            title	  : "宝贝图片大小不能超过500kb,为使避免图片上传出现问题，请尽量选择完毕图片后再上传",
-            fileNum: 5, // 上传文件数量
-            divId: "T_upload", // div  id
-            accept: "image/jpeg,image/x-png", // 上传文件的类型
-            //fileSize  :51200000,     // 上传文件的大小
-            //onSuccess: function(data, i) {
-            /*var temp =eval('(' + data.currentTarget.response + ')')
-             if(temp.fileName != undefined){
-             $("#img_src"+i).attr('value',temp.fileName);
-             $("#img_src"+i).attr('name',"upload_img");
-             }*/
-            //},
-            onDelete: function(i) {
-                /*var img_val = $("#img_src"+i).attr("value");
-                 if(img_val != '' && img_val != undefined){
-                 var md = "product";
-                 var img= $.page.getImgUrl(img_val);
-                 $.ajax({
-                 type:"POST",
-                 url: "base/delPic" ,
-                 data : {img:img,id: pid,md:md},
-                 success: function(rel){}
-                 });
-                 }*/
-            }
-        });
-    })
-</script>
-<div><jsp:include page="footer.jsp"/></div>
+<jsp:include page="chatPart.jsp"/>
+<jsp:include page="footer.jsp"/>
+</div>
 </body>
 <!-- jquery latest version -->
 <script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap framework js -->
 <script src="../pages/js/bootstrap.min.js"></script>
-<!-- owl.carousel js -->
-<script src="../pages/js/owl.carousel.min.js"></script>
-<!-- owl.carousel js -->
-<script src="../pages/js/jquery-ui.min.js"></script>
-<!-- jquery.nivo.slider js -->
-<script src="../pages/js/jquery.nivo.slider.pack.js"></script>
 <!-- All js plugins included in this file. -->
 <script src="../pages/js/plugins.js"></script>
 <!-- Main js file that contents all jQuery plugins activation. -->
-<script src="../pages/js/main.js"></script>
 <script src="../pages/js/T_upload.js"></script>
-<script src="../pages/js/jquery-ui.min.js"></script>
+<script type="text/javascript" >
+    $(function() {
+        $.Tupload.init({
+            url: "/addGoods",
+            title	  : '',
+            fileNum: 5, // 上传文件数量
+            divId: "T_upload", // div  id
+            accept: "image/jpeg,image/x-png", // 上传文件的类型
+        });
+    })
+</script>
 </html>
