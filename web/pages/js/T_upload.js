@@ -192,6 +192,11 @@
 		    var xhr = new XMLHttpRequest();
 		    xhr.open("post", FileController, true);
 		    xhr.send(form);
+		    xhr.onreadystatechange = function () {
+				if (xhr.status==200 && xhr.readyState==4){
+					window.location.href = '/showItem?id='+xhr.responseText;
+				}
+            }
 		},
 		onDelete:function(i){
 			$.Tupload.options.onDelete(i);

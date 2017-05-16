@@ -68,6 +68,8 @@ public class GoodsManageServlet extends HttpServlet {
                     }
                     item.setPictures(picpaths);
                     goodsDAO.addGoods(item);
+                    PrintWriter writer = resp.getWriter();
+                    writer.print(id);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
