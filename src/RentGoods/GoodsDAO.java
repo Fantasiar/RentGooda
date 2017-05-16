@@ -23,7 +23,7 @@ public class GoodsDAO {
     //连接数据库
     public void getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        connection = DriverManager.getConnection(DB_URL,User,password);
+        connection = DriverManager.getConnection(DB_URL, User, password);
     }
     //断开数据库连接
     public void closeConnection() throws SQLException {
@@ -64,20 +64,20 @@ public class GoodsDAO {
     }
 
     //获取number个特定type的商品的信息，以时间排序
-    public ArrayList<Goods> getGoodsByType(int number,String type) throws SQLException {
+    public ArrayList<Goods> getGoodsByType(int number, String type) throws SQLException {
         ArrayList<Goods> goods = new ArrayList<>();
         //sql语句
         String getinfo = "select * from goodsInfo where type=? order by dateChanged DESC limit ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(getinfo);
         //设定数量
-        preparedStatement.setInt(2,number);
-        preparedStatement.setString(1,type);
+        preparedStatement.setInt(2, number);
+        preparedStatement.setString(1, type);
         ResultSet set = preparedStatement.executeQuery();   //执行查询
         //添加Goods对象到List
         //
-        while (set.next()){
-            ArrayList<String> pic=getPictures(set.getString("id"));
-            Goods item=new Goods(set.getString("id"),
+        while (set.next()) {
+            ArrayList<String> pic = getPictures(set.getString("id"));
+            Goods item = new Goods(set.getString("id"),
                     set.getString("name"),
                     set.getString("type"),
                     set.getString("fineness"),
@@ -115,9 +115,9 @@ public class GoodsDAO {
 
         String getPics = "select picpath from pictures where id=? and main='0' ";
         PreparedStatement pst = connection.prepareStatement(getPics);
-        pst.setString(1,id);
+        pst.setString(1, id);
         ResultSet set = pst.executeQuery();
-        while (set.next()){
+        while (set.next()) {
             pictures.add(set.getString("picpath"));
         }
         return pictures;
@@ -127,28 +127,63 @@ public class GoodsDAO {
     //获取特定ID的商品
     public Goods getGood(String id) throws SQLException {
         //sql语句
-    String getInfo="select * from goodsInfo where id=?";
-    PreparedStatement pstat = connection.prepareStatement(getInfo);
-    pstat.setString(1,id);
-    ResultSet set = pstat.executeQuery();
-    set.next();
-    ArrayList<String> pic=getPictures(id);
-    return new Goods(set.getString("id"),
-            set.getString("name"),
-            set.getString("type"),
-            set.getString("fineness"),
-            set.getString("description"),
-            pic,
-            set.getString("ownerId"),
-            set.getDate("dateChanged"),
-            set.getInt("state"),
-            set.getString("borrowerId"),
-            set.getDate("dateReturn"),
-            set.getString("address"),
-            set.getDouble("deposit"),
-            set.getDouble("price"),
-            set.getDouble("originprice")
-            );
+        String getInfo = "select * from goodsInfo where id=?";
+        PreparedStatement pstat = connection.prepareStatement(getInfo);
+        pstat.setString(1, id);
+        ResultSet set = pstat.executeQuery();
+        set.next();
+        ArrayList<String> pic = getPictures(id);
+        return new Goods(set.getString("id"),
+                set.getString("name"),
+                set.getString("type"),
+                set.getString("fineness"),
+                set.getString("description"),
+                pic,
+                set.getString("ownerId"),
+                set.getDate("dateChanged"),
+                set.getInt("state"),
+                set.getString("borrowerId"),
+                set.getDate("dateReturn"),
+                set.getString("address"),
+                set.getDouble("deposit"),
+                set.getDouble("price"),
+                set.getDouble("originprice")
+        );
+    }
+
+    //搜索
+    public ArrayList<Goods> Search(String keyword, String sortMethod) throws SQLException {
+        ArrayList<Goods> goods = new ArrayList<>();
+        keyword = "%" + keyword + "%";
+        String search = "select * from goodsInfo  where name like ? or description like ? ";
+        switch (sortMethod){
+            case "dup":
+                search+="order by dateChanged";
+                break;
+            case "ddown":
+                search+="order by dateChanged DESC ";
+                break;
+            case "pup":
+                search+="ORDER BY price";
+                break;
+            case "pdown":
+                search+="ORDER BY price DESC ";
+        }
+
+        PreparedStatement pst = connection.prepareStatement(search);
+        pst.setString(1, keyword);
+        pst.setString(2, keyword);
+        ResultSet set = pst.executeQuery();
+        while (set.next()) {
+            ArrayList<String> pic = getPictures(set.getString("id"));
+            Goods item = new Goods();
+            item.setPictures(pic);
+            item.setId(set.getString("id"));
+            item.setName(set.getString("name"));
+            item.setPrice(set.getDouble("price"));
+            goods.add(item);
+        }
+        return goods;
     }
 
     //获取借出物品信息

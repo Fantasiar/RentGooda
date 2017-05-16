@@ -41,6 +41,9 @@
         <url-pattern>/changeGoodsState</url-pattern>
         <url-pattern>/deleteGoods</url-pattern>
         <url-pattern>/applylent</url-pattern>
+        <url-pattern>/Query</url-pattern>
+        <url-pattern>/Search</url-pattern>
+
     </servlet-mapping>
     <servlet>
         <servlet-name>UserManage</servlet-name>
