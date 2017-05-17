@@ -15,8 +15,6 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-    ============================================ -->
 
     <!-- All css files are included here. -->
     <!-- Bootstrap framework main css -->
@@ -34,8 +32,6 @@
     <link rel="stylesheet" href="/pages/css/style-a8c43f98b3.css">
     <link rel="stylesheet" href="/pages/css/userinfo-13bf163bde.css">
 
-    <!-- Modernizr JS -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
 <div class="container" >

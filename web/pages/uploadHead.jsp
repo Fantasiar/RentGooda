@@ -1,14 +1,15 @@
 <%@ page import="RentGoods.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <link rel="stylesheet" type="text/css" href="/pages/css/imgareaselect-animated.css">
-
-    <script type="text/javascript" src="/pages/js/vendor/jquery-1.12.0.min.js"></script>
-    <script type="text/javascript" src="/pages/js/jquery.imgareaselect.min.js"></script>
-
-
+<html>
+<head>
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/pages/css/imgareaselect-animated.css">
+<script type="text/javascript" src="/pages/js/vendor/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="/pages/js/jquery.imgareaselect.min.js"></script>
 <link rel="stylesheet" href="../pages/css/bootstrap.min.css">
 <script src="../pages/js/bootstrap.min.js"></script>
-<script src="../pages/js/vendor/jquery-1.12.0.min.js"></script>
+</head>
 
 <%User user = (User) session.getAttribute("User");%>
 <style type="text/css">
@@ -18,6 +19,8 @@
         margin-bottom: 30px;
         border: none;
         background-color: white;
+        z-index: 10000;
+        display: block;
     }
     .smallpic {
         background-color: white;
@@ -28,10 +31,30 @@
         overflow: hidden;
         border: none;
         float: left;
+        z-index: 10000;
+        display: block;
+    }
+    .background1{
+        position: fixed;
+        display: block;
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+        background: #5e5e5e;
+        height: 100%;
+        width: 100%;
+    }
+    #uploadArea{
+        width: 550px;
+        height: 450px;
+        left: 29%;
+        top: 100px;
     }
 </style>
-
-<div class="container" style="background-color: #f5f5f6;height: 600px;">
+<body>
+<div class="background1">
+</div>
+<div class="container" id="uploadArea" style="background-color: #f5f5f6;z-index: 10000;position: fixed">
     <div class="row">
         <div style="float: left;margin-left: 20px;margin-top: 15px">
             <div class="frame bigpic">
@@ -40,7 +63,7 @@
         </div>
         <div style="float: left">
             <div id="preview" class="smallpic" >
-                <img id="view_photo" src="<%=user.getHead()%>" width: 100% height: 100%>
+                <img id="view_photo" src="<%=user.getHead()%>" width="100px" height="100px">
             </div>
         </div>
     </div>
@@ -53,32 +76,20 @@
             <div style="margin-left: 30px">
                 <input id="upload" type="file" name="file" onchange="change(this)" style="background-color: #f5f5f6;border: none;">
             </div>
-            <div class="col-md-2 col-md-offset-4">
-                <input type="button" value="确认" class="btn btn-primary" style="width: 80px">
+            <div class="col-md-2 col-md-offset-3">
+                <input type="button" value="确认" class="btn btn-primary" id="headButton" style="width: 80px">
+            </div>
+            <div class="col-md-2 col-md-offset-2">
+                <input type="button" value="取消" class="btn btn-primary" onclick="jump()" style="width: 80px">
             </div>
         </form>
     </div>
 </div>
-<%--
-<div class="container">
-<div class="frame bigpic" >
-    <img id="photo" src="images/flower2.jpg" height="100%">
-</div>
-<div id="preview" class="smallpic" style="width: 100px; height: 100px; overflow: hidden;">
-    <img id="view_photo" src="images/flower2.jpg" style="width: 100px; ">
-</div><br/><br/>
-    </div>
-<form action="/uploadHead" method="post" enctype="multipart/form-data">
-    <input id="startX" name="x" type="hidden" readonly="readonly"/>
-    <input id="startY" name="y" type="hidden" readonly="readonly"/>
-    <input id="width" name="width" type="hidden" readonly="readonly"/>
-    <input id="height" name="height" type="hidden" readonly="readonly"/>
-    <br/>
-    <input id="upload" type="file" name="file" onchange="change(this)" class="upbutton"/>
-    <input type="button" value="确认" class="headbutton">
-    </form>
---%>
+
 <script type="text/javascript">
+    function jump() {
+        window.location.href = "/UserManage";
+    }
     var width = 0;
     var height = 0;
     function clacImgZoomParam( maxWidth, maxHeight, width, height ){
@@ -121,8 +132,11 @@
         reader.onloadend = function(){
             var img=$('#photo');
             var img1=$('.bigpic');
+            var img2=$('#uploadArea');
             img1.css('width','100%');
             img1.css('height','100%');
+            img2.css('width','100%');
+            img2.css('height','100%');
             img.attr("src",this.result);
             $("#view_photo").attr("src",this.result);
             img.load(function(){
@@ -139,6 +153,8 @@
                 img.height(rect.height);
                 $("#preview").width(img.width()/3);
                 $("#preview").height(img.width()/3*selectrate);
+                img2.css('width','550px');
+                img2.css('height','450px%');
                 img1.css('width','300px');
                 img1.css('height','300px');
                 init();
@@ -150,7 +166,7 @@
         img.css('width','300px');
         img.css('height','300px');
     })
-    $('.headbutton').click(
+    $('#headButton').click(
             function upload() {
                 var formdata = new FormData();
                 formdata.append('file', $('#upload')[0].files[0]);
@@ -229,4 +245,4 @@
     }
 </script>
 </body>
-
+</html>

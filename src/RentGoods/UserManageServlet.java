@@ -135,13 +135,15 @@ public class UserManageServlet extends HttpServlet{
                 String rootpath = getServletContext().getInitParameter("rootpath");
                 String partpath = FileUtils.getFilePath(getServletContext().getInitParameter("Picspath"));
                 try {
+                    IDUtils idUtils = new IDUtils(1000);
+                    String pid = String.valueOf(idUtils.generate());
                     String filename = FileUtils.getFilename(image);
                     //下载文件
                     FileUtils.downloadFile(image.getInputStream(),rootpath+partpath,filename);
                     if(x!=0||y!=0||width!=0||height!=0){
-                        FileUtils.cutImage(rootpath+partpath+filename,x,y,height,imgHeight);
+                        FileUtils.cutImage(rootpath+partpath+filename,x,y,height,imgHeight,pid);
                     }
-                    user.setHead(partpath+filename);
+                    user.setHead("/pic?id="+pid);
                     dao.uploadHead(user);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
