@@ -270,29 +270,6 @@ public class GoodsManageServlet extends HttpServlet {
             }
         }
 
-        if(method.equals("/pic")){
-            String id = req.getParameter("id");
-            resp.setContentType("image/jpeg");
-            try {
-                InputStream is=goodsDAO.query_getPhotoImageBlob(id);
-                if(is!=null){
-                    is= new BufferedInputStream(is);
-                    BufferedImage bi= ImageIO.read(is);
-                    OutputStream os = resp.getOutputStream();
-                    JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(os);
-                    encoder.encode(bi);
-                    os.close();
-                    is.close();
-                //参考http://862123204-qq-com.iteye.com/blog/1555447
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-
-        }
-
         try {
             goodsDAO.closeConnection();
         } catch (SQLException e) {
