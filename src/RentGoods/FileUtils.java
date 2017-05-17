@@ -57,8 +57,20 @@ public class FileUtils {
         in.close();
         connection.close();
     }
+    public static void downloadFile(InputStream in,String pid,String DB_URL,String root,String password) throws SQLException, IOException {
+        Connection connection = DriverManager.getConnection(DB_URL,root,password);
+        String add = "INSERT INTO pictures(main,pic,pid,picpath) VALUES (?,?,?,?)";
+        PreparedStatement pstat = connection.prepareStatement(add);
+        pstat.setInt(1,3);
+        pstat.setBinaryStream(2,in,in.available());
+        pstat.setString(3,pid);
+        pstat.setString(4,"/pic?id="+pid);
+        pstat.execute();
+        in.close();
+        connection.close();
+    }
 
-    public static void cutImage(String filepath,int x,int y,int height,int imgHeight) throws IOException {
+    public static void cutImage(String filepath,int x,int y,int height,int imgHeight,String pid) throws IOException, SQLException {
         File image = new File(filepath);
         String fileType = filepath.substring(filepath.lastIndexOf(".")+1);
         BufferedImage cutimage = ImageIO.read(image);
@@ -77,5 +89,12 @@ public class FileUtils {
         cutimage = cutimage.getSubimage(finalX,finalY,finalHeight,finalHeight);
         image.delete();
         ImageIO.write(cutimage,fileType,image);
+        String DB_URL = "jdbc:mysql://neu.sqwe.tk:3306/RentGood";
+        String root = "neusc";
+        String password = "neusc1505";
+        FileInputStream inputStream = new FileInputStream(image);
+        downloadFile(inputStream,pid,DB_URL,root,password);
+        image.delete();
+        inputStream.close();
     }
 }
