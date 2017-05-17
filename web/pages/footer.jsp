@@ -52,8 +52,8 @@
                         <i class="pe-7s-world"></i>
                     </div>
                     <div class="service-title">
-                        <h3>FREE SHIPPING</h3>
-                        <p>Free shipping on all UK orders</p>
+                        <h3>节约资源</h3>
+                        <p>短期租借剩下了购买改物品的需要的资源。</p>
                     </div>
                 </div>
             </div>
@@ -85,8 +85,8 @@
                         <i class="pe-7s-gift"></i>
                     </div>
                     <div class="service-title">
-                        <h3>BLACK FRIDAY</h3>
-                        <p>Shocking discount on every friday</p>
+                        <h3>租借转卖</h3>
+                        <p>在租借者同意下可将租借转为卖出</p>
                     </div>
                 </div>
             </div>
@@ -101,37 +101,36 @@
             <div class="row">
                 <div class="col-md-2 col-sm-4 col-md-offset-3">
                     <div class="footer-widget">
-                        <h3 class="footer-title">My account</h3>
+                        <h3 class="footer-title">我们的目标</h3>
                         <ul class="block-content">
-                            <li><a href="#">My orders</a></li>
-                            <li><a href="#">My credit slips</a></li>
-                            <li><a href="#">Sitemap</a></li>
-                            <li><a href="#">My addresses</a></li>
-                            <li><a href="#">My personal info</a></li>
+                            <li><a href="#">为大学生提供一个在线</a></li>
+                            <li><a href="#">租借平台。在这里你们</a></li>
+                            <li><a href="#">可以找到同校的学生，</a></li>
+                            <li><a href="#">租借到需要的物品，更</a></li>
+                            <li><a href="#">加方便靠谱。</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-4">
                     <div class="footer-widget">
-                        <h3 class="footer-title">Information</h3>
+                        <h3 class="footer-title">我们的服务</h3>
                         <ul class="block-content">
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Discount</a></li>
-                            <li><a href="#">Site map</a></li>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Custom service</a></li>
+                            <li><a href="#">租借需要物品</a></li>
+                            <li><a href="#">发表要租借物品</a></li>
+                            <li><a href="#">闲置物品共享</a></li>
+                            <li><a href="#">可直接联系出租者</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-4 footer-sm">
                     <div class="footer-widget">
-                        <h3 class="footer-title">OUR SERVICE</h3>
+                        <h3 class="footer-title">制作团队</h3>
                         <ul class="block-content">
-                            <li><a href="#">My orders</a></li>
-                            <li><a href="#">My credit slips</a></li>
-                            <li><a href="#">Sitemap</a></li>
-                            <li><a href="#">My addresses</a></li>
-                            <li><a href="#">My personal info</a></li>
+                            <li><a href="#">夏浩耘</a></li>
+                            <li><a href="#">陈翰林</a></li>
+                            <li><a href="#">范东升</a></li>
+                            <li><a href="#">范留庆</a></li>
+                            <li><a href="#">李佳宇</a></li>
                         </ul>
                     </div>
                 </div>

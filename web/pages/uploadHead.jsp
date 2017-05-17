@@ -21,6 +21,8 @@
         background-color: white;
         z-index: 10000;
         display: block;
+        height: 300px;
+        width: 300px;
     }
     .smallpic {
         background-color: white;
@@ -162,7 +164,7 @@
         }
     }
     $(document).ready(function () {
-        var img=$('.bigpic');
+        var img=$('#photo');
         img.css('width','300px');
         img.css('height','300px');
     })
@@ -183,7 +185,7 @@
                     processData: false,
                     contentType: false
                 }).done(function () {
-                    alert('success');
+                    window.location.href = '/UserManage';
                 }).fail(function () {
                     alert('false');
                 });

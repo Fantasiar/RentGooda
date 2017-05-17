@@ -5,7 +5,7 @@
          version="3.1">
     <context-param>
         <param-name>DB_URL</param-name>
-        <param-value>jdbc:mysql://neu.sqwe.tk:3306/RentGood</param-value>
+        <param-value>jdbc:mysql://r.sqwe.tk:3306/RentGood</param-value>
     </context-param>
     <context-param>
         <param-name>username</param-name>
@@ -17,18 +17,18 @@
     </context-param>
     <context-param>
         <param-name>Picspath</param-name>
-        <param-value>/Pictures/</param-value>
+        <param-value>./Pictures/</param-value>
     </context-param>
     <context-param>
         <param-name>rootpath</param-name>
-        <param-value>/Users/LingHanchen/Desktop/ideaProjects/RentGooda/web</param-value>
+        <param-value>./</param-value>
     </context-param>
     
     <servlet>
         <servlet-name>GoodsManage</servlet-name>
         <servlet-class>RentGoods.GoodsManageServlet</servlet-class>
         <multipart-config>
-            <location>/Users/LingHanchen/Desktop/ideaProjects/RentGooda/web/Pictures</location>
+            <location>./Pictures</location>
         </multipart-config>
     </servlet>
     <servlet-mapping>

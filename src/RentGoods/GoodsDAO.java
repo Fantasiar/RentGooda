@@ -1,6 +1,7 @@
 package RentGoods;
 
 import javax.xml.transform.Result;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -157,7 +158,7 @@ public class GoodsDAO {
     public ArrayList<Goods> Search(String keyword, String sortMethod) throws SQLException {
         ArrayList<Goods> goods = new ArrayList<>();
         keyword = "%" + keyword + "%";
-        String search = "select * from goodsInfo  where name like ? or description like ? ";
+        String search = "select * from goodsInfo  where name like ? and state=0  or description like ? and state=0";
         switch (sortMethod){
             case "dup":
                 search+="order by dateChanged";
@@ -319,5 +320,7 @@ public class GoodsDAO {
         pstat.setString(3,borrower);
         pstat.executeUpdate();
     }
+
+    //获取图片内容
 
 }

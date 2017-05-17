@@ -25,7 +25,6 @@
                         <nav>
                             <ul>
                                 <li><a href="/index.jsp">主页</a></li>
-                                <li><a href="shop.html">分类</a></li>
                                 <%
                                     if (user == null){
                                         out.println("<li><a href='/signin'>登录</a></li>");
