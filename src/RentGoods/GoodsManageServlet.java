@@ -283,7 +283,7 @@ public class GoodsManageServlet extends HttpServlet {
                     encoder.encode(bi);
                     os.close();
                     is.close();
-
+                //参考http://862123204-qq-com.iteye.com/blog/1555447
                 }
 
             } catch (SQLException e) {
