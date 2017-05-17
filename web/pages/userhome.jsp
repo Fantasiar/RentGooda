@@ -42,7 +42,7 @@
                 <div class="m-userinfo">
                     <!-- 头像-->
                     <div class="w-avatar" id="j-sideAvatarWarp" style="width:100px; height:100px; border-radius:50%; overflow:hidden;">
-                        <img src="<%=user.getHead()%>" alt="头像" width="100px" height="100px" id="j-sideAvatar" style="background-color: white;border: none">
+                        <img src="<%=user.getHead()%>" alt="头像" width="100px" height="100px" id="j-sideAvatar" style="background-color: white;border: none;cursor: pointer" onclick="jump()">
                     </div>
                     <!--昵称-->
                     <div class="w-nickname" id="j-sideNickname" style="color: black;font-size: medium"><%=user.getNickName()%></div>
@@ -51,7 +51,6 @@
                 <!--左侧工具栏-->
                 <div class="m-menu" >
                     <a class="w-menu-item" id="person" style="color: black;font-size: small;text-decoration: none ;cursor:pointer;">个人信息</a>
-                    <a class="w-menu-item " id="head" style="color: black;font-size: small;text-decoration: none ;cursor:pointer;" >修改头像</a>
                     <a class="w-menu-item " id="password" style="color: black;font-size: small;text-decoration: none ;cursor:pointer;">帐号安全</a>
                     <a class="w-menu-item " id="myborrow" style="color: black;font-size: small;text-decoration: none ;cursor:pointer;">租借物品</a>
                     <a class="w-menu-item " id="myItems" style="color: black;font-size: small;text-decoration: none ;cursor:pointer;">我的物品</a>
@@ -97,6 +96,9 @@
 <!-- Main js file that contents all jQuery plugins activation. -->
 <script src="../pages/js/main.js"></script>
 <script type="text/javascript">
+    function jump() {
+        window.location.href = "/getUserHead";
+    }
     $(document).ready(function () {
         $.ajax({
             url:"/UserInfo"
